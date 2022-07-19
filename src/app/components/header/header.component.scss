@@ -1,0 +1,81 @@
+.header {
+  &__logo svg-icon {
+    &.logoWhite svg {
+      width: auto;
+      height: 74px;
+      & g {
+        fill: #fff;
+      }
+    }
+    &.logoBlack svg {
+      width: auto;
+      height: 74px;
+      & g {
+        fill: #333;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    background-color: rgba(0, 0, 0, 0.6);
+    &__logo svg-icon {
+      &.logoBlack svg {
+        width: auto;
+        height: 74px;
+        & g {
+          fill: #fff;
+        }
+      }
+    }
+  }
+
+  &.active {
+    background-color: rgba(0, 0, 0, 0.96);
+  }
+
+  &__mobile-menu {
+    transition: all 0.5s;
+    &.active {
+      transition: all 0.4s ease-in;
+      height: calc(100vh - 104px);
+    }
+  }
+
+  &__icon-burger {
+    @media (max-width: 768px) {
+      & span, &::after, &::before {
+        left: 0;
+        height: 9%;
+        width: 100%;
+        position: absolute;
+        background-color: #ffffff;
+        transition: all .2s ease 0s;
+      }
+      &::after, &::before {
+        content: "";
+      }
+      &::before {
+        top: 0;
+      }
+      &::after {
+        bottom: 0;
+      }
+      & span {
+        top: 50%;
+        transform: scale(1) translate(0px, -50%);
+      }
+      &.active span {
+        transform: scale(0) translate(0px, -50%);
+      }
+      &.active::before {
+        top: 50%;
+        transform: rotate(-45deg) translate(0px, -50%);
+      }
+      &.active::after {
+        bottom: 50%;
+        transform: rotate(45deg) translate(0px, 50%);
+      }
+    }
+  }
+}
+

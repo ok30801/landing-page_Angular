@@ -1,0 +1,12 @@
+.suggestions {
+  &__title:after {
+    content: '';
+    width: 100px;
+    height: 10px;
+    background-color: #333333;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  }
+}

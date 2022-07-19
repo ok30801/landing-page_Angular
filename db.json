@@ -1,0 +1,87 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "categoryName": "pine nut",
+      "productName": "pine nut kernel, 300 g",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi.jpg",
+      "stars": 4,
+      "price": 38,
+      "discount": 29,
+      "newProduct": false,
+      "amount": 1
+    },
+    {
+      "id": 2,
+      "categoryName": "pine nut",
+      "productName": "cedar cone, 35 g",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovaya_shishka.jpg",
+      "stars": 0,
+      "price": 15.10,
+      "newProduct": true,
+      "amount": 1
+    },
+    {
+      "id": 3,
+      "categoryName": "pine nut",
+      "productName": "pine nut kernel, 55 g",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_55.jpg",
+      "stars": 5,
+      "price": 3.10,
+      "newProduct": false,
+      "amount": 1
+    },
+    {
+      "id": 4,
+      "categoryName": "pine nut",
+      "productName": "pine nut kernel, 120 g",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_120.jpg",
+      "stars": 4,
+      "price": 5.40,
+      "discount": 27,
+      "newProduct": false,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "categoryName": "candies",
+      "productName": "cedar grillage assortment, 120 g (blueberries, cranberries, sea buckthorn)",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh.png",
+      "stars": 0,
+      "price": 105,
+      "newProduct": true,
+      "amount": 1
+    },
+    {
+      "id": 6,
+      "categoryName": "candies",
+      "productName": "cedar grillage with pine cone, 700 g | show box",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh_s_sosnovoy_shishkoy.png",
+      "stars": 5,
+      "price": 105,
+      "newProduct": false,
+      "amount": 1
+    },
+    {
+      "id": 7,
+      "categoryName": "oil",
+      "productName": "cedar oil, 250 ml",
+      "img": "http://localhost:4200/assets/img/catalog/kedrovoe_maslo_500ml.png",
+      "stars": 0,
+      "price": 105,
+      "newProduct": true,
+      "amount": 1
+    },
+    {
+      "id": 8,
+      "categoryName": "nut masses",
+      "productName": "pine nut kernel urbech, 200 g",
+      "img": "http://localhost:4200/assets/img/catalog/urbech_cedar.png",
+      "stars": 4,
+      "price": 100,
+      "discount": 14,
+      "newProduct": false,
+      "amount": 1
+    }
+  ]
+}

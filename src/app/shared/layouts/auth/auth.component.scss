@@ -1,0 +1,9 @@
+.auth {
+  background-image: url('../../../../assets/bg/auth_bg-d.jpg');
+  @media (max-width: 768px) {
+    background-image: url('../../../../assets/bg/auth_bg-m.jpg');
+  }
+  &__block {
+    height: calc(100vh - 104px);
+  }
+}

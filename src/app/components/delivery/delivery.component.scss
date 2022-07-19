@@ -1,0 +1,40 @@
+.delivery {
+  //&__icon-order {
+  //  background-image: url('../../../assets/img/delivery/shopping-bag.png');
+  //}
+  //&__card:hover &__icon-order {
+  //  background-image: url('../../../assets/bg/back_m_3_2_1.jpg');
+  //}
+  &__icon-order-front, &__icon-order-back {
+    //position: absolute;
+    //left: -11px;
+    //top: 50%;
+    //transform: translateY(-50%);
+  }
+
+
+  &__icon-order-front {
+    backface-visibility: hidden;
+  }
+  &__icon-order-back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+  }
+
+  &__card:hover &__icon-order-front {
+    transform: rotateY(180deg)
+  }
+  &__card:hover &__icon-order-back {
+    transform: rotateY(360deg)
+  }
+
+
+
+  //&__card-order:hover &__icon {
+  //  background-image: url('../../../assets/bg/back_m_3_2_1.jpg');
+  //}
+  //
+  //&__card-order:hover &__icon {
+  //  background-image: url('../../../assets/bg/back_m_3_2_1.jpg');
+  //}
+}

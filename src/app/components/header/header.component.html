@@ -1,0 +1,75 @@
+<div
+  class="header fixed w-full transition-colors duration-500"
+  [class.active]="mobileMenu"
+  [class.bg-third]="headerTop"
+  [class.drop-shadow-xl]="headerTop"
+>
+  <div class="container py-5">
+
+    <nav class="header__desktop flex justify-between items-center">
+
+      <a routerLink="/cart" class="header__logo">
+        <svg-icon src="assets/logo.svg" class="{{headerTop ? 'logoBlack' : 'logoWhite' }}"></svg-icon>
+      </a>
+
+      <ul
+        class="header__links flex gap-5 uppercase font-montserrat font-semibold md:hidden
+        text-[14px] {{headerTop ? 'text-primary' : 'text-third' }}"
+      >
+        <li>
+          <a routerLink="/about" class="test hover:text-gray transition-colors">about us</a>
+        </li>
+        <li>
+          <a routerLink="/catalog" class="hover:text-gray transition-colors">catalog</a>
+        </li>
+        <li>
+          <a routerLink="/delivery" class="hover:text-gray transition-colors">delivery</a>
+        </li>
+        <li>
+          <a routerLink="/reviews" class="hover:text-gray transition-colors">reviews</a>
+        </li>
+        <li>
+          <a routerLink="/contacts" class="hover:text-gray transition-colors">contacts</a>
+        </li>
+      </ul>
+      <ul class="header__icons flex gap-5">
+        <li>
+          <a routerLink="/" class="{{headerTop ? 'fill-primary' : 'fill-third' }}">
+            <svg-icon src="assets/icons/avatar.svg" class="md:fill-third"></svg-icon>
+          </a>
+        </li>
+        <li class="relative">
+          <a routerLink="/cart" class="{{headerTop ? 'fill-primary' : 'fill-third' }}">
+            <svg-icon src="assets/icons/cart.svg" class="md:fill-third"></svg-icon>
+          </a>
+          <div
+            class="absolute scale-0 transition-transform duration-300 w-7 h-7 rounded-full
+            bg-darkRed flex justify-center items-center bottom-0 right-0"
+            [class.scale-100]="countProducts"
+          >
+            {{countProducts}}
+          </div>
+        </li>
+      </ul>
+
+      <div class="header__icon-burger hidden md:block md:z-10 md:relative md:w-[30px] md:h-[18px]"
+           [class.active]="mobileMenu" (click)="showMobileMenu()">
+        <span></span>
+      </div>
+
+    </nav>
+
+    <nav class="header__mobile flex justify-center transition-all">
+      <ul
+        class="header__mobile-menu h-0 overflow-hidden flex flex-col justify-center text-2xl gap-5"
+        [class.active]="mobileMenu"
+      >
+        <li><a href="#" class="mobile-menu__link">ABOUT US</a></li>
+        <li><a href="#" class="mobile-menu__link">CATALOG</a></li>
+        <li><a href="#" class="mobile-menu__link">DELIVERY</a></li>
+        <li><a href="#" class="mobile-menu__link">Reviews</a></li>
+        <li><a href="#" class="mobile-menu__link">Contacts</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

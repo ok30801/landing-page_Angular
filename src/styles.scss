@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Oswald:wght@400;500;600;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'swiper/scss';
+
+@layer base {
+  body {
+    margin: 0 auto;
+    color: #333;
+    background: #f7f7f7;
+  }
+}
+@layer components {
+  .container {
+    @apply max-w-[1240px]
+  }
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all .5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+

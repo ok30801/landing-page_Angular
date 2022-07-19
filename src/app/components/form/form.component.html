@@ -1,0 +1,115 @@
+<div class="modal-form fixed backdrop-blur-sm bg-black/70 top-0 left-0 z-50 w-full h-full transition-all">
+  <div class="modal-form__body min-h-full flex items-center justify-center py-7 px-3">
+    <div class="modal-form__content w-[800px] h-[660px] relative flex justify-end overflow-hidden rounded-xl bg-white">
+
+        <span
+          class="modal-form__close absolute fill-primary hover:fill-gray transition-all cursor-pointer top-2 right-2"
+          (click)="close.emit()"
+        >
+          <svg-icon src="assets/icons/close.svg"></svg-icon>
+        </span>
+
+      <div class="modal-form__bg absolute right-[370px] w-[430px] h-full bg-fixed bg-center"></div>
+      <div
+        class="modal-form__form w-[370px] h-full bg-white text-four text-sm p-10 flex flex-col items-center justify-around">
+        <div class="modal-form__title text-3xl font-semibold text-primary">{{title}}</div>
+
+        <div class="modal-form__text">Через соцсети</div>
+
+        <div class="modal-form__social-icon flex gap-5">
+          <a href="#" class="">
+            <svg-icon src="assets/icons/yandex.svg"></svg-icon>
+          </a>
+          <a href="#" class="">
+            <svg-icon src="assets/icons/vkontakte.svg"></svg-icon>
+          </a>
+          <a href="#" class="rounded-full bg-[#e1d6d6] p-1">
+            <svg-icon src="assets/icons/google.svg" class="w-0.5 h-0.5"></svg-icon>
+          </a>
+        </div>
+
+        <div class="modal-form__text divider relative flex justify-center w-full">
+          <div class="divider z-50 w-12 text-center bg-third">или</div>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="w-full flex flex-col gap-5">
+
+          <div class="flex flex-col">
+            <label class="mb-1" for="email">Email</label>
+            <input
+              formControlName="email"
+              type="text"
+              id="email"
+              class="border border-gray rounded h-14 pl-3 outline-green-500"
+              [class.modal-form__invalid]="this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched"
+            />
+            <p *ngIf="this.loginForm.get('email')?.invalid && this.loginForm.get('email')?.touched"><small
+              class="text-danger">Email is required</small></p>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="flex justify-between">
+              <label class="mb-1" for="password">Password</label>
+              <span
+                *ngIf="!showPassword else show"
+                class="fill-four hover:fill-gray transition-all cursor-pointer"
+                (click)="toggleShowPassword()"
+              >
+                <svg-icon src="assets/icons/visibility_off.svg"></svg-icon>
+              </span>
+
+              <ng-template #show>
+                <span
+                  class="fill-four hover:fill-gray transition-all cursor-pointer"
+                  (click)="toggleShowPassword()"
+                >
+                  <svg-icon src="assets/icons/visibility.svg"></svg-icon>
+                </span>
+              </ng-template>
+
+            </div>
+
+            <input
+              id="password"
+              formControlName="password"
+              [type]="!showPassword ? 'password' : 'text'"
+              class="border border-gray rounded h-14 pl-3 outline-green-500"
+              [class.modal-form__invalid]="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched"
+            />
+
+            <p *ngIf="this.loginForm.get('password')?.invalid && this.loginForm.get('password')?.touched">
+              <small class="text-danger">Password is required (min. length = 8)</small>
+            </p>
+          </div>
+
+          <div class="flex justify-between">
+            <span class="flex items-center">
+              <input type="checkbox" id="checkbox" checked class="mr-1.5">
+              <label for="checkbox">Remember me</label>
+            </span>
+            <a routerLink="/forgot-password" class="hover:text-gray transition-colors underline decoration-1">Forgot
+              password?</a>
+          </div>
+
+          <div class="flex justify-center w-full">
+            <button
+              [class.modal-form__btn-disabled]="loginForm.invalid"
+              class="p-4 rounded-full w-[120px] font-montserrat uppercase font-semibold bg-bgButton text-third
+          hover:bg-third hover:text-bgButton border hover:border-bgButton transition-all duration-500"
+            >
+              Sign in
+            </button>
+          </div>
+
+        </form>
+
+        <div>
+          For the first time with us?
+          <a routerLink="/sign-up" class="hover:text-gray transition-colors underline decoration-1">Sign Up</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

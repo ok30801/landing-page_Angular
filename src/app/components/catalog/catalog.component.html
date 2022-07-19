@@ -1,0 +1,69 @@
+<section class="catalog py-7 bg-third py-16">
+  <app-title [text]="title"></app-title>
+  <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center">
+
+    <div
+      *ngFor="let product of products, let idx = index"
+      class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
+      items-center h-full uppercase overflow-hidden">
+
+      <div class=" text-four text-sm">{{product.categoryName}}</div>
+
+      <div class="flex grow mb-10">{{product.productName}}</div>
+
+      <div class="mb-5">
+        <img src="{{product.img}}" alt="{{product.productName}}">
+      </div>
+
+      <div *ngIf="!product.stars else rating" class="mb-5">
+        <img src="assets/img/rating/no-rating.png" alt="stars">
+      </div>
+
+      <ng-template #rating>
+        <div *ngIf="product.stars === 4 else fullRating" class="mb-5">
+          <img src="assets/img/rating/four-star.png" alt="stars">
+        </div>
+        <ng-template #fullRating>
+          <div class="mb-5">
+            <img src="assets/img/rating/five-star.png" alt="stars">
+          </div>
+        </ng-template>
+      </ng-template>
+
+      <div class="font-montserrat font-extrabold text-2xl mb-5">${{product.price}}</div>
+
+      <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
+        <div
+          class="w-1/5 h-full border-r-2 flex justify-center items-center catalog__button-count"
+          (click)="removeProduct(idx)"
+        >
+          <svg-icon src="assets/icons/minus.svg"></svg-icon>
+        </div>
+        <div class="w-3/5 text-3xl font-montserrat">{{product.amount}}</div>
+        <div
+          class="w-1/5 h-full text-5xl border-l-2 flex justify-center items-center catalog__button-count"
+          (click)="addProduct(idx)"
+        >
+          <svg-icon src="assets/icons/plus.svg"></svg-icon>
+        </div>
+      </div>
+
+      <button
+        class="rounded-full w-full h-11 font-montserrat uppercase text-sm font-semibold bg-third text-primary border
+         hover:bg-darkRed hover:text-third transition-all duration-500 flex items-center justify-center"
+        (click)="inCart(idx)"
+      >
+        in cart
+      </button>
+
+      <div *ngIf="product?.discount" class="absolute top-0 left-0 w-14 h-[28px] bg-bgButton text-third">
+        -{{product.discount}}%
+      </div>
+
+      <div *ngIf="product.newProduct" class="absolute top-3 right-[-26px] w-28 h-[28px] bg-green text-third
+       rotate-45 normal-case shadow-lg">
+        New
+      </div>
+    </div>
+  </div>
+</section>

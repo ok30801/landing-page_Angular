@@ -1,0 +1,11 @@
+.catalog {
+  &__button-count {
+    transition: all .3s;
+    &:hover {
+      background: #a10f2b;
+      & svg-icon {
+        fill: #ffffff;
+      }
+    }
+  }
+}

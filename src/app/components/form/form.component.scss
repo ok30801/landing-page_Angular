@@ -1,0 +1,29 @@
+.modal-form {
+  transition: .4s ease-in-out;
+  &__bg {
+    background-image: url("../../../assets/bg/bg_form.jpg");
+    clip-path: ellipse(83% 110% at 17% 30%);
+  }
+  &__text.divider{
+    &:after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: #cdcdcd;
+      display: block;
+      top: calc(50%);
+      position: absolute;
+    }
+  }
+  &__invalid {
+    border: 2px solid #f37676;
+  }
+  &__btn-disabled {
+    background: #F37676FF;
+    border: 1px solid #F37676FF;
+    &:hover {
+      cursor: not-allowed;
+      color: #fff;
+    }
+  }
+}
