@@ -1,0 +1,10 @@
+.faq {
+  &__title:after {
+    content: '\2714';
+    position: absolute;
+    font-size: 24px;
+    font-weight: 600;
+    padding-right: 50px;
+    left: -38px;
+  }
+}

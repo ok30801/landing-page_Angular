@@ -1,83 +1,72 @@
-<section class="delivery mb-20 border-b border-gray">
+<section class="delivery pt-20 border-b border-gray bg-secondary">
   <div class="container">
 
     <app-title [text]="title"></app-title>
-    <div class="mb-20 grid grid-cols-gridColDelivery gap-11 md:gap-5 pl-12">
-      <div
-        class="delivery__card bg-third p-14 flex flex-col items-center relative"
-        (mouseenter)="onEvent($event)"
-        (mouseleave)="offEvent($event)"
-      >
-        <div class="text-5 font-Oswald mb-2.5 text-lg">
-          ORDER ONLINE
-        </div>
-        <div class="font-montserrat">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </div>
+    <div class="mb-20 grid grid-cols-gridColDelivery gap-5 md:gap-5">
+      <div class="pl-10">
+        <div class="delivery__card bg-third p-14 flex flex-col items-center relative">
+          <div class="font-Oswald mb-2.5 text-lg uppercase text-center">
+            order online
+          </div>
+          <div class="font-montserrat">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </div>
 
-        <div
-          class="delivery__icon-order-front absolute -left-11 top-1/2 -translate-y-1/2 w-20 h-20
-          rounded-full bg-secondary flex justify-center items-center transition duration-300"
-        >
-          <img src="assets/img/delivery/shopping-bag.png">
-        </div>
+          <div class="delivery__icon-front absolute -left-10 top-1/2 w-20 h-20 rounded-full bg-secondary
+          flex justify-center items-center transition duration-500">
+            <img src="assets/img/delivery/shopping-bag.png">
+          </div>
 
-        <div
-          class="delivery__icon-order-back absolute -left-11 top-1/2 -translate-y-1/2 w-20 h-20
-          rounded-full bg-secondary flex justify-center items-center transition duration-300"
-        >
-          <img src="assets/img/delivery/shopping-bag_2.png">
-        </div>
+          <div class="delivery__icon-back absolute -left-10 top-1/2 w-20 h-20 rounded-full bg-secondary
+          overflow-hidden transition duration-500">
+            <img src="assets/img/delivery/phone.png">
+          </div>
 
-<!--        <div-->
-<!--          class="delivery__icon-order-back absolute -left-11 top-1/2 -translate-y-1/2 w-20 h-20-->
-<!--          rounded-full bg-secondary overflow-hidden transition duration-300"-->
-<!--        >-->
-<!--          <img src="assets/img/delivery/shopping-bag_2.png">-->
-<!--        </div>-->
-
-
-        <!--        <div-->
-        <!--          class="delivery__icon-order mb-5 absolute -left-[45px] top-1/2 -translate-y-1/2 w-[85px] h-[85px]-->
-        <!--          rounded-full bg-secondary bg-auto bg-no-repeat bg-center"-->
-        <!--        >-->
-        <!--          <img src="assets/img/delivery/shopping-bag.png">-->
-        <!--        </div>-->
-
-        <!--        <div-->
-        <!--          class="delivery__icon-order mb-5 absolute -left-[45px] top-1/2 -translate-y-1/2 w-[85px] h-[85px]-->
-        <!--          rounded-full bg-secondary bg-auto bg-no-repeat bg-center"-->
-        <!--        >-->
-        <!--          <img src="assets/img/delivery/phone.png">-->
-        <!--        </div>-->
-      </div>
-      <div class="bg-third p-14 flex flex-col items-center relative">
-        <div class="text-5 font-Oswald mb-2.5 text-lg">
-          ORDER ONLINE
-        </div>
-        <div class="font-montserrat">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </div>
-
-        <div
-          class="delivery__icon-wallet mb-5 absolute -left-[45px] top-1/2 -translate-y-1/2 w-[85px] h-[85px] rounded-full bg-secondary flex justify-center items-center">
-          <!--          <img src="assets/img/delivery/wallet-money.png">-->
         </div>
       </div>
-      <div class="bg-third p-14 flex flex-col items-center relative">
-        <div class="text-5 font-Oswald mb-2.5 text-lg">
-          ORDER ONLINE
-        </div>
-        <div class="font-montserrat">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </div>
+      <div class="pl-10">
+        <div class="delivery__card bg-third p-14 flex flex-col items-center relative">
+          <div class="font-Oswald mb-2.5 text-lg uppercase text-center">
+            pay any way you like
+          </div>
+          <div class="font-montserrat">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </div>
 
-        <div
-          class="delivery__icon-delivery mb-5 absolute -left-[45px] top-1/2 -translate-y-1/2 w-[85px] h-[85px] rounded-full bg-secondary flex justify-center items-center">
-          <!--          <img src="assets/img/delivery/delivery.png">-->
+          <div class="delivery__icon-front absolute -left-10 top-1/2 w-20 h-20 rounded-full bg-secondary
+          flex justify-center items-center transition duration-500">
+            <img src="assets/img/delivery/wallet-money.png">
+          </div>
+
+          <div class="delivery__icon-back absolute -left-10 top-1/2 w-20 h-20 rounded-full bg-secondary
+          overflow-hidden transition duration-500">
+            <img src="assets/img/delivery/terminal.png">
+          </div>
+
+        </div>
+      </div>
+      <div class="pl-10">
+        <div class="delivery__card bg-third p-14 flex flex-col items-center relative">
+          <div class="font-Oswald mb-2.5 text-lg uppercase text-center">
+            we deliver within 3 business days
+          </div>
+          <div class="font-montserrat">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </div>
+
+          <div class="delivery__icon-front absolute -left-10 top-1/2 w-20 h-20 rounded-full bg-secondary
+          flex justify-center items-center transition duration-500">
+            <img src="assets/img/delivery/delivery.png">
+          </div>
+
+          <div class="delivery__icon-back absolute -left-10 top-1/2 w-20 h-20 rounded-full bg-secondary
+          overflow-hidden transition duration-500">
+            <img src="assets/img/delivery/delivery_service.jpg">
+          </div>
+
         </div>
       </div>
     </div>

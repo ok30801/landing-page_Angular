@@ -1,4 +1,4 @@
-export interface Product {
+export interface IProduct {
   id: number,
   categoryName: string,
   productName: string
@@ -7,5 +7,6 @@ export interface Product {
   price: number,
   discount: number,
   new: boolean,
-  amount: number
+  amount: number,
+  newProduct: boolean
 }

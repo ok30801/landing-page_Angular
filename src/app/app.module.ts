@@ -13,7 +13,6 @@ import { FormComponent } from './components/form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SuggestionsComponent } from './components/suggestions/suggestions.component';
 import { SwiperModule } from 'swiper/angular';
-import { SliderSuggestionsComponent } from './components/sliders/slider-suggestions/slider-suggestions.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { SpecialComponent } from './components/special/special.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -24,8 +23,11 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { FEEDBACKComponent } from './components/feedback/feedback.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TitleComponent } from './components/title/title.component';
+import { SliderSuggestionsComponent } from './components/sliders/slider-suggestions/slider-suggestions.component';
+import { SliderReviewsComponent } from './components/sliders/slider-reviews/slider-reviews.component';
 import { SliderManufactureOneComponent } from './components/sliders/sliders-manufacture/slider-one/slider-manufacture-one.component';
 import { SliderManufactureTwoComponent } from './components/sliders/sliders-manufacture/slider-two/slider-manufacture-two.component';
+import {LoaderComponent} from './components/loader/loader.component';
 
 
 @NgModule({
@@ -36,7 +38,6 @@ import { SliderManufactureTwoComponent } from './components/sliders/sliders-manu
     HeaderComponent,
     FormComponent,
     SuggestionsComponent,
-    SliderSuggestionsComponent,
     CatalogComponent,
     SpecialComponent,
     ButtonComponent,
@@ -47,8 +48,11 @@ import { SliderManufactureTwoComponent } from './components/sliders/sliders-manu
     FEEDBACKComponent,
     FooterComponent,
     TitleComponent,
+    SliderSuggestionsComponent,
+    SliderReviewsComponent,
     SliderManufactureOneComponent,
     SliderManufactureTwoComponent,
+    LoaderComponent,
   ],
   imports: [
     SwiperModule,
@@ -57,7 +61,7 @@ import { SliderManufactureTwoComponent } from './components/sliders/sliders-manu
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularSvgIconModule.forRoot()
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

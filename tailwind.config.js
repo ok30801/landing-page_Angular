@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
     screens: {
-      'xlg': {'max': '1213px'},
+      'xlg': {'max': '1109px'},
       'lg': {'max': '991px'},
       'md': {'max': '768px'},
       'sm': {'max': '480px'}
@@ -33,7 +33,7 @@ module.exports = {
       gridTemplateColumns: {
         gridCol: 'repeat(auto-fill, minmax(250px, 1fr))',
         gridColDelivery: 'repeat(auto-fit, minmax(330px, 1fr))',
-      }
+      },
     },
   },
   plugins: [],

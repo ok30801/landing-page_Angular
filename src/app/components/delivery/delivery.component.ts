@@ -8,23 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class DeliveryComponent implements OnInit {
 
   title: string = 'delivery'
-  test = false
 
   constructor() { }
 
   ngOnInit(): void { }
-
-  onEvent(e: any) {
-    if(e.target.classList.contains('delivery__card')) {
-      this.test = !this.test
-    }
-    console.log(this.test)
-  }
-  offEvent(e: any) {
-    if(e.target.classList.contains('delivery__card')) {
-      this.test = !this.test
-    }
-    console.log(this.test)
-  }
-
 }

@@ -1,15 +1,16 @@
 <section class="catalog py-7 bg-third py-16">
   <app-title [text]="title"></app-title>
-  <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center">
-
+  <div
+    *ngIf="products.length else loader"
+    class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center">
     <div
       *ngFor="let product of products, let idx = index"
       class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
-      items-center h-full uppercase overflow-hidden">
+      items-center h-full overflow-hidden">
 
-      <div class=" text-four text-sm">{{product.categoryName}}</div>
+      <div class=" text-four text-sm">{{product.categoryName | uppercase}}</div>
 
-      <div class="flex grow mb-10">{{product.productName}}</div>
+      <div class="flex grow mb-10">{{product.productName | uppercase}}</div>
 
       <div class="mb-5">
         <img src="{{product.img}}" alt="{{product.productName}}">
@@ -30,7 +31,7 @@
         </ng-template>
       </ng-template>
 
-      <div class="font-montserrat font-extrabold text-2xl mb-5">${{product.price}}</div>
+      <div class="font-montserrat font-extrabold text-2xl mb-5">{{product.price | currency}}</div>
 
       <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
         <div
@@ -56,7 +57,7 @@
         in cart
       </button>
 
-      <div *ngIf="product?.discount" class="absolute top-0 left-0 w-14 h-[28px] bg-bgButton text-third">
+      <div *ngIf="product?.discount" class="absolute top-0 left-0 w-14 h-7 bg-bgButton text-third">
         -{{product.discount}}%
       </div>
 
@@ -66,4 +67,8 @@
       </div>
     </div>
   </div>
+
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
 </section>

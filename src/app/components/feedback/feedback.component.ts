@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FEEDBACKComponent implements OnInit {
 
+  title: string = 'our feedback to nature'
   constructor() { }
 
   ngOnInit(): void {
