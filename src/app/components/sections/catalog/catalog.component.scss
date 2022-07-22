@@ -1,0 +1,14 @@
+.catalog {
+  &__button-count:hover {
+    & svg-icon {
+      fill: #ffffff;
+    }
+  }
+  //&__btn-paginate{
+  //  &:hover {
+  //    & svg-icon {
+  //      fill: #ffffff;
+  //    }
+  //  }
+  //}
+}

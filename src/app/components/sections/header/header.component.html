@@ -1,9 +1,21 @@
 <div
-  class="header fixed w-full transition-colors duration-500"
+  class="header fixed w-full transition-all duration-500"
   [class.active]="mobileMenu"
   [class.bg-third]="headerTop"
   [class.drop-shadow-xl]="headerTop"
 >
+
+  <!--  <app-error></app-error>-->
+
+  <div
+    *ngIf="errorService.error$ | async as error"
+    class="h-[50px] flex justify-center items-center bg-red-600 text-white"
+    [@error]="errorState"
+  >
+    {{error}}
+  </div>
+
+
   <div class="container py-5">
 
     <nav class="header__desktop flex justify-between items-center">

@@ -1,0 +1,92 @@
+<section class="catalog py-7 bg-third py-16">
+  <app-title [text]="title"></app-title>
+
+  <div *ngIf="loading" class="container text-center">
+    <app-loader></app-loader>
+  </div>
+
+  <div class="container flex justify-between mb-10" [class.hidden]="loading">
+    <app-select [options]="options" class="w-40 h-11 border-2 border-darkRed rounded-md"></app-select>
+    <pagination-controls
+      (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel=""
+    ></pagination-controls>
+  </div>
+
+  <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center mb-10">
+    <div
+      *ngFor="let product of products | paginate: { itemsPerPage: 8, currentPage: page, totalItems: totalPage}, let idx = index"
+      class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
+      items-center h-full overflow-hidden">
+
+      <div class=" text-four text-sm">{{product.categoryName | uppercase}}</div>
+
+      <div class="flex grow mb-10">{{product.productName | uppercase}}</div>
+
+      <div class="mb-5">
+        <img src="{{product.img}}" alt="{{product.productName}}">
+      </div>
+
+      <div *ngIf="!product.stars else rating" class="mb-5">
+        <img src="../../../../assets/img/rating/no-rating.png" alt="stars">
+      </div>
+
+      <ng-template #rating>
+        <div *ngIf="product.stars === 4 else fullRating" class="mb-5">
+          <img src="../../../../assets/img/rating/four-star.png" alt="stars">
+        </div>
+        <ng-template #fullRating>
+          <div class="mb-5">
+            <img src="../../../../assets/img/rating/five-star.png" alt="stars">
+          </div>
+        </ng-template>
+      </ng-template>
+
+      <div class="font-montserrat font-extrabold text-2xl mb-5">{{product.price | currency}}</div>
+
+      <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
+        <div
+          class="w-1/5 h-full border-r-2 border-darkRed flex justify-center items-center catalog__button-count
+          hover:bg-darkRed transition-all duration-300"
+          (click)="removeProduct(idx)"
+        >
+          <svg-icon src="assets/icons/minus.svg"></svg-icon>
+        </div>
+        <div class="w-3/5 text-3xl font-montserrat">{{product.amount}}</div>
+        <div
+          class="w-1/5 h-full border-l-2 border-darkRed flex justify-center items-center catalog__button-count
+          hover:bg-darkRed transition-all duration-300"
+          (click)="addProduct(idx)"
+        >
+          <svg-icon src="assets/icons/plus.svg"></svg-icon>
+        </div>
+      </div>
+
+      <button
+        class="rounded-full w-full h-11 font-montserrat uppercase text-sm font-semibold bg-third text-primary border border-darkRed
+         hover:bg-darkRed hover:text-third transition-all duration-300 flex items-center justify-center"
+        (click)="inCart(idx)"
+      >
+        in cart
+      </button>
+
+      <div *ngIf="product?.discount" class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-third
+       -rotate-45 normal-case shadow-lg">
+        -{{product.discount}}%
+      </div>
+
+      <div *ngIf="product.newProduct" class="absolute top-3 -right-7 w-28 h-7 bg-green text-third
+       rotate-45 normal-case shadow-lg">
+        New
+      </div>
+    </div>
+  </div>
+  <!--<div class="flex justify-center">
+    <pagination-controls
+      (pageChange)="page = $event"
+      previousLabel=""
+      nextLabel=""
+    ></pagination-controls>
+  </div>-->
+</section>

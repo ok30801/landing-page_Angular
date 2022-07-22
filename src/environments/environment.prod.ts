@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  getProducts: 'http://localhost:3000/products',
 };

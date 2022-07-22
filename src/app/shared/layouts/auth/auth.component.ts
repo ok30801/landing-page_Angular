@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
