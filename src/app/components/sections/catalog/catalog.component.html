@@ -6,7 +6,30 @@
   </div>
 
   <div class="container flex justify-between mb-10" [class.hidden]="loading">
-    <app-select [options]="options" class="w-40 h-11 border-2 border-darkRed rounded-md"></app-select>
+    <div
+      class="relative"
+    >
+      <ng-select
+        [(ngModel)]="selectedOption"
+        class="w-40 h-11 border-2 border-darkRed rounded-md"
+        [clearable]="false"
+      >
+        <ng-option *ngFor="let option of options" [value]="option.label">{{option.label}}</ng-option>
+      </ng-select>
+
+      <div
+        class="absolute top-2 left-2"
+        [class.hidden]="selectedOption"
+      >
+        <div class="flex items-center gap-1">
+          <svg-icon src="assets/icons/sort.svg" class="fill-darkRed"></svg-icon>
+          <span>Sorted</span>
+        </div>
+
+      </div>
+
+    </div>
+
     <pagination-controls
       (pageChange)="page = $event"
       previousLabel=""
@@ -16,13 +39,16 @@
 
   <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center mb-10">
     <div
-      *ngFor="let product of products | paginate: { itemsPerPage: 8, currentPage: page, totalItems: totalPage}, let idx = index"
+      *ngFor="let product of products |
+          sortedProducts: selectedOption.toLowerCase() |
+          paginate: { itemsPerPage: 8, currentPage: page, totalItems: totalPage}, let idx = index"
       class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
-      items-center h-full overflow-hidden">
+      items-center h-full overflow-hidden"
+    >
 
-      <div class=" text-four text-sm">{{product.categoryName | uppercase}}</div>
+      <div class=" text-four text-sm  font-Oswald">{{product.categoryName | uppercase}}</div>
 
-      <div class="flex grow mb-10">{{product.productName | uppercase}}</div>
+      <div class="flex grow mb-10  font-Oswald">{{product.productName | uppercase}}</div>
 
       <div class="mb-5">
         <img src="{{product.img}}" alt="{{product.productName}}">
@@ -71,22 +97,15 @@
         in cart
       </button>
 
-      <div *ngIf="product?.discount" class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-third
-       -rotate-45 normal-case shadow-lg">
+      <div *ngIf="product?.discount" class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-third -rotate-45 shadow-lg font-Oswald">
         -{{product.discount}}%
       </div>
 
-      <div *ngIf="product.newProduct" class="absolute top-3 -right-7 w-28 h-7 bg-green text-third
-       rotate-45 normal-case shadow-lg">
+      <div *ngIf="product.newProduct"
+           class="absolute top-3 -right-7 w-28 h-7 bg-green text-third rotate-45 normal-case shadow-lg font-Oswald">
         New
       </div>
+
     </div>
   </div>
-  <!--<div class="flex justify-center">
-    <pagination-controls
-      (pageChange)="page = $event"
-      previousLabel=""
-      nextLabel=""
-    ></pagination-controls>
-  </div>-->
 </section>

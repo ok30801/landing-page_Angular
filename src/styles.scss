@@ -22,9 +22,15 @@
 ::-webkit-scrollbar {
   width: 0;
 }
+
+/* Select */
+
 .ng-select .ng-select-container {
   border: none;
 }
+
+/* Pagination */
+
 .ngx-pagination {
   border: 2px solid #a10f2b;
   border-radius: 7px;
@@ -45,25 +51,26 @@
     margin-left: 0 !important;
   }
 }
-.current.ng-star-inserted {
-  background: #a10f2b !important;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Montserrat';
-  font-size: 20px;
-}
 
-.ng-star-inserted a {
-  height: 40px;
-  width: 40px;
-  font-family: 'Montserrat';
+.ng-star-inserted {
   font-size: 20px;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+  //font-family: 'Montserrat';
+    transition: background .5s;
+  a {
+    height: 40px;
+    width: 40px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  & .current {
+    background: #a10f2b !important;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .pagination-next {
@@ -73,8 +80,13 @@
   align-items: center;
   border-right: none;
   border-left: 2px solid #a10f2b;
+  transition: transrorm .3s;
   & a {
     transition: all .3s;
+    &:after {
+      color: #a10f2b;
+      margin-bottom: 6px;
+    }
     &:hover {
       background: #a10f2b !important;
       border-radius: 0 4px 4px 0;
@@ -97,6 +109,10 @@
   justify-content: center;
   & a {
     transition: all .3s;
+    &:before {
+      color: #a10f2b;
+      margin-bottom: 6px;
+    }
     &:hover {
       background: #a10f2b !important;
       border-radius: 4px 0 0 4px;

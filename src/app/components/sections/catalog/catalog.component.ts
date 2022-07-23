@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {CartService} from '../../../services/cart.service';
-import {IProduct, ISelectionOptions} from '../../../interfaces/interfaces';
+import {IProduct} from '../../../interfaces/interfaces';
 // import {Observable} from 'rxjs';
 // import {map, tap} from 'rxjs/operators';
 
@@ -14,12 +14,15 @@ export class CatalogComponent implements OnInit {
 
   title: string = 'catalog'
   count: number = 1
-  products: IProduct[] = []
+  products!: IProduct[]
   // products$!: Observable<IProduct[]>
   loading = false
   totalPage!: number
   page = 1
-  options: ISelectionOptions[] = [
+  selectedOption = ''
+  touchedSelect = false
+
+  options = [
     { value: 1, label: 'Price' },
     { value: 2, label: 'Discount' },
     { value: 3, label: 'Category' },
@@ -87,4 +90,5 @@ export class CatalogComponent implements OnInit {
     //   })
     // )
   }
+
 }

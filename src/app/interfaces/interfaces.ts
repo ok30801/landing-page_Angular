@@ -10,8 +10,3 @@ export interface IProduct {
   amount: number,
   newProduct: boolean
 }
-
-export interface ISelectionOptions {
-  value: number,
-  label: string
-}

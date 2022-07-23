@@ -31,9 +31,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorComponent } from './components/error/error.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { SelectComponent } from './components/select/select.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { SortedProductsPipe } from './pipes/sorted-products.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +58,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SliderManufactureTwoComponent,
     LoaderComponent,
     ErrorComponent,
-    SelectComponent,
+    SortedProductsPipe,
   ],
   imports: [
     SwiperModule,
