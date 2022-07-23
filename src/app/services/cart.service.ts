@@ -14,6 +14,7 @@ export class CartService {
 
   addProductCart(product: IProduct) {
     this.cart.push(product);
+    console.log(this.cart)
     this.cart$.next(this.cart)
   }
 }

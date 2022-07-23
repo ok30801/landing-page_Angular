@@ -75,7 +75,7 @@
         <div
           class="w-1/5 h-full border-r-2 border-darkRed flex justify-center items-center catalog__button-count
           hover:bg-darkRed transition-all duration-300"
-          (click)="removeProduct(idx)"
+          (click)="removeProduct(product.id)"
         >
           <svg-icon src="assets/icons/minus.svg"></svg-icon>
         </div>
@@ -83,7 +83,7 @@
         <div
           class="w-1/5 h-full border-l-2 border-darkRed flex justify-center items-center catalog__button-count
           hover:bg-darkRed transition-all duration-300"
-          (click)="addProduct(idx)"
+          (click)="addProduct(product.id)"
         >
           <svg-icon src="assets/icons/plus.svg"></svg-icon>
         </div>
@@ -92,7 +92,7 @@
       <button
         class="rounded-full w-full h-11 font-montserrat uppercase text-sm font-semibold bg-third text-primary border border-darkRed
          hover:bg-darkRed hover:text-third transition-all duration-300 flex items-center justify-center"
-        (click)="inCart(idx)"
+        (click)="inCart(product.id)"
       >
         in cart
       </button>

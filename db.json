@@ -86,7 +86,7 @@
 
 
     {
-      "id": 7,
+      "id": 9,
       "categoryName": "oil",
       "productName": "cedar oil, 250 ml",
       "img": "http://localhost:4200/assets/img/catalog/kedrovoe_maslo_500ml.png",
@@ -96,7 +96,7 @@
       "amount": 1
     },
     {
-      "id": 8,
+      "id": 10,
       "categoryName": "nut masses",
       "productName": "pine nut kernel urbech, 200 g",
       "img": "http://localhost:4200/assets/img/catalog/urbech_cedar.png",
@@ -107,7 +107,7 @@
       "amount": 1
     },
     {
-      "id": 1,
+      "id": 11,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 300 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi.jpg",
@@ -118,7 +118,7 @@
       "amount": 1
     },
     {
-      "id": 2,
+      "id": 12,
       "categoryName": "pine nut",
       "productName": "cedar cone, 35 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovaya_shishka.jpg",
@@ -128,7 +128,7 @@
       "amount": 1
     },
     {
-      "id": 3,
+      "id": 13,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 55 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_55.jpg",
@@ -138,18 +138,18 @@
       "amount": 1
     },
     {
-      "id": 4,
+      "id": 14,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 120 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_120.jpg",
-      "stars": 4,
+      "stars": 14,
       "price": 5.40,
       "discount": 27,
       "newProduct": false,
       "amount": 1
     },
     {
-      "id": 5,
+      "id": 15,
       "categoryName": "candies",
       "productName": "cedar grillage assortment, 120 g (blueberries, cranberries, sea buckthorn)",
       "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh.png",
@@ -159,7 +159,7 @@
       "amount": 1
     },
     {
-      "id": 6,
+      "id": 16,
       "categoryName": "candies",
       "productName": "cedar grillage with pine cone, 700 g | show box",
       "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh_s_sosnovoy_shishkoy.png",
@@ -169,7 +169,7 @@
       "amount": 1
     },
     {
-      "id": 7,
+      "id": 17,
       "categoryName": "oil",
       "productName": "cedar oil, 250 ml",
       "img": "http://localhost:4200/assets/img/catalog/kedrovoe_maslo_500ml.png",
@@ -179,7 +179,7 @@
       "amount": 1
     },
     {
-      "id": 8,
+      "id": 18,
       "categoryName": "nut masses",
       "productName": "pine nut kernel urbech, 200 g",
       "img": "http://localhost:4200/assets/img/catalog/urbech_cedar.png",
@@ -190,7 +190,7 @@
       "amount": 1
     },
     {
-      "id": 1,
+      "id": 19,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 300 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi.jpg",
@@ -201,7 +201,7 @@
       "amount": 1
     },
     {
-      "id": 2,
+      "id": 20,
       "categoryName": "pine nut",
       "productName": "cedar cone, 35 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovaya_shishka.jpg",
@@ -211,7 +211,7 @@
       "amount": 1
     },
     {
-      "id": 3,
+      "id":21,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 55 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_55.jpg",
@@ -221,7 +221,7 @@
       "amount": 1
     },
     {
-      "id": 4,
+      "id":22,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 120 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_120.jpg",
@@ -232,7 +232,7 @@
       "amount": 1
     },
     {
-      "id": 5,
+      "id":23,
       "categoryName": "candies",
       "productName": "cedar grillage assortment, 120 g (blueberries, cranberries, sea buckthorn)",
       "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh.png",
@@ -242,7 +242,7 @@
       "amount": 1
     },
     {
-      "id": 6,
+      "id": 24,
       "categoryName": "candies",
       "productName": "cedar grillage with pine cone, 700 g | show box",
       "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh_s_sosnovoy_shishkoy.png",
@@ -252,7 +252,7 @@
       "amount": 1
     },
     {
-      "id": 7,
+      "id": 25,
       "categoryName": "oil",
       "productName": "cedar oil, 250 ml",
       "img": "http://localhost:4200/assets/img/catalog/kedrovoe_maslo_500ml.png",
@@ -262,7 +262,7 @@
       "amount": 1
     },
     {
-      "id": 8,
+      "id": 26,
       "categoryName": "nut masses",
       "productName": "pine nut kernel urbech, 200 g",
       "img": "http://localhost:4200/assets/img/catalog/urbech_cedar.png",
@@ -273,7 +273,7 @@
       "amount": 1
     },
     {
-      "id": 1,
+      "id": 27,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 300 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi.jpg",
@@ -284,7 +284,7 @@
       "amount": 1
     },
     {
-      "id": 2,
+      "id": 28,
       "categoryName": "pine nut",
       "productName": "cedar cone, 35 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovaya_shishka.jpg",
@@ -294,7 +294,7 @@
       "amount": 1
     },
     {
-      "id": 3,
+      "id": 29,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 55 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_55.jpg",
@@ -304,7 +304,7 @@
       "amount": 1
     },
     {
-      "id": 4,
+      "id": 30,
       "categoryName": "pine nut",
       "productName": "pine nut kernel, 120 g",
       "img": "http://localhost:4200/assets/img/catalog/kedrovye_orekhi_120.jpg",
@@ -315,7 +315,7 @@
       "amount": 1
     },
     {
-      "id": 5,
+      "id": 31,
       "categoryName": "candies",
       "productName": "cedar grillage assortment, 120 g (blueberries, cranberries, sea buckthorn)",
       "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh.png",
@@ -325,7 +325,7 @@
       "amount": 1
     },
     {
-      "id": 6,
+      "id": 32,
       "categoryName": "candies",
       "productName": "cedar grillage with pine cone, 700 g | show box",
       "img": "http://localhost:4200/assets/img/catalog/kedrovyy_grilyazh_s_sosnovoy_shishkoy.png",
@@ -335,7 +335,7 @@
       "amount": 1
     },
     {
-      "id": 7,
+      "id": 33,
       "categoryName": "oil",
       "productName": "cedar oil, 250 ml",
       "img": "http://localhost:4200/assets/img/catalog/kedrovoe_maslo_500ml.png",
@@ -345,7 +345,7 @@
       "amount": 1
     },
     {
-      "id": 8,
+      "id": 34,
       "categoryName": "nut masses",
       "productName": "pine nut kernel urbech, 200 g",
       "img": "http://localhost:4200/assets/img/catalog/urbech_cedar.png",

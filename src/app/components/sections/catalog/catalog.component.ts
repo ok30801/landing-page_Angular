@@ -20,7 +20,6 @@ export class CatalogComponent implements OnInit {
   totalPage!: number
   page = 1
   selectedOption = ''
-  touchedSelect = false
 
   options = [
     { value: 1, label: 'Price' },
@@ -40,9 +39,9 @@ export class CatalogComponent implements OnInit {
     })
   }
 
-  removeProduct(idx: number) {
-    this.products.map((item: IProduct, index: number) => {
-      if (idx === index && item.amount > 1) {
+  removeProduct(id: number) {
+    this.products.map((item: IProduct) => {
+      if (id === item.id && item.amount > 1) {
         item.amount--
       }
     })
@@ -57,9 +56,10 @@ export class CatalogComponent implements OnInit {
 
   }
 
-  addProduct(idx: number) {
-    this.products.map((item: IProduct, index: number) => {
-      if (idx === index) {
+  addProduct(id: number) {
+    console.log(id)
+    this.products.map((item: IProduct) => {
+      if (id === item.id) {
         item.amount++
       }
     })
@@ -74,9 +74,9 @@ export class CatalogComponent implements OnInit {
     // )
   }
 
-  inCart(idx: number) {
-    this.products.map((item: IProduct, index: number) => {
-      if (idx === index) {
+  inCart(id: number) {
+    this.products.map((item: IProduct) => {
+      if (id === item.id) {
         this.cartService.addProductCart(item)
       }
     })
