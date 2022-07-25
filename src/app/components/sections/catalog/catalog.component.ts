@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {CartService} from '../../../services/cart.service';
 import {IProduct} from '../../../interfaces/interfaces';
+import * as AOS from 'aos';
 // import {Observable} from 'rxjs';
 // import {map, tap} from 'rxjs/operators';
 

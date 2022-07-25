@@ -70,7 +70,7 @@ import { SortedProductsPipe } from './pipes/sorted-products.pipe';
     AngularSvgIconModule.forRoot(),
     NgSelectModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

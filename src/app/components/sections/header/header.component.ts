@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, OnChanges, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {CartService} from '../../../services/cart.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ErrorService} from '../../../services/error.service';
@@ -21,7 +21,7 @@ import {ErrorService} from '../../../services/error.service';
     ])
   ]
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit {
 
   errorState = 'start'
 
@@ -58,9 +58,5 @@ export class HeaderComponent implements OnInit, OnChanges {
     } else {
       this.headerTop = false
     }
-  }
-
-  ngOnChanges() {
-
   }
 }

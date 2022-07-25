@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-feedback',
@@ -11,6 +12,7 @@ export class FEEDBACKComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    AOS.init()
   }
 
 }

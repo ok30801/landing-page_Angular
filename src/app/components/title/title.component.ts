@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-title',
@@ -11,7 +12,6 @@ export class TitleComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

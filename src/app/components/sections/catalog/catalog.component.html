@@ -1,14 +1,12 @@
-<section class="catalog py-7 bg-third py-16">
+<section class="catalog py-7 bg-third">
   <app-title [text]="title"></app-title>
 
   <div *ngIf="loading" class="container text-center">
     <app-loader></app-loader>
   </div>
 
-  <div class="container flex justify-between mb-10" [class.hidden]="loading">
-    <div
-      class="relative"
-    >
+  <div class="container flex justify-between mb-10 sm:flex-col" [class.hidden]="loading">
+    <div class="relative" data-aos="fade-down-right">
       <ng-select
         [(ngModel)]="selectedOption"
         class="w-40 h-11 border-2 border-darkRed rounded-md"
@@ -16,7 +14,6 @@
       >
         <ng-option *ngFor="let option of options" [value]="option.label">{{option.label}}</ng-option>
       </ng-select>
-
       <div
         class="absolute top-2 left-2"
         [class.hidden]="selectedOption"
@@ -27,13 +24,13 @@
         </div>
 
       </div>
-
     </div>
 
     <pagination-controls
       (pageChange)="page = $event"
       previousLabel=""
       nextLabel=""
+      data-aos="fade-down-left"
     ></pagination-controls>
   </div>
 
@@ -43,7 +40,7 @@
           sortedProducts: selectedOption.toLowerCase() |
           paginate: { itemsPerPage: 8, currentPage: page, totalItems: totalPage}, let idx = index"
       class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
-      items-center h-full overflow-hidden"
+      items-center h-full overflow-hidden" data-aos="fade-left" data-aos-offset="500"
     >
 
       <div class=" text-four text-sm  font-Oswald">{{product.categoryName | uppercase}}</div>
