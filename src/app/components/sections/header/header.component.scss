@@ -15,6 +15,14 @@
       }
     }
   }
+  &__links a {
+    font-size: 14px;
+    transition: all .3s;
+    &:hover {
+      color: #cdcdcd;
+      cursor: pointer;
+    }
+  }
 
   @media (max-width: 768px) {
     background-color: rgba(0, 0, 0, 0.6);

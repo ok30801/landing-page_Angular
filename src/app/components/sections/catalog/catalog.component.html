@@ -1,4 +1,4 @@
-<section class="catalog py-7 bg-third">
+<section id="catalog" class="catalog py-7 bg-third overflow-hidden">
   <app-title [text]="title"></app-title>
 
   <div *ngIf="loading" class="container text-center">
@@ -6,7 +6,7 @@
   </div>
 
   <div class="container flex justify-between mb-10 sm:flex-col" [class.hidden]="loading">
-    <div class="relative" data-aos="fade-down-right">
+    <div class="relative">
       <ng-select
         [(ngModel)]="selectedOption"
         class="w-40 h-11 border-2 border-darkRed rounded-md"
@@ -34,7 +34,7 @@
     ></pagination-controls>
   </div>
 
-  <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center mb-10">
+  <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center mb-10 -z-50">
     <div
       *ngFor="let product of products |
           sortedProducts: selectedOption.toLowerCase() |

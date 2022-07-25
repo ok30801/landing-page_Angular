@@ -29,6 +29,17 @@ export class HeaderComponent implements OnInit {
   public headerTop: boolean = false
   public countProducts!: number
 
+  headerLinks = [
+    { id: 'link_1', name: 'About us', url: 'about-us' },
+    { id: 'link_2', name: 'Catalog', url: 'catalog' },
+    { id: 'link_2', name: 'Special', url: 'special' },
+    { id: 'link_2', name: 'Manufacture', url: 'manufacture' },
+    { id: 'link_3', name: 'delivery', url: 'delivery' },
+    { id: 'link_4', name: 'faq', url: 'faq' },
+    { id: 'link_5', name: 'reviews', url: 'reviews' },
+    { id: 'link_6', name: 'feedback', url: 'feedback' },
+  ]
+
   constructor(private cart: CartService, public errorService: ErrorService) { }
 
   animate() {
@@ -58,5 +69,11 @@ export class HeaderComponent implements OnInit {
     } else {
       this.headerTop = false
     }
+  }
+
+  scrollPageTo = (url: string) => {
+    const element = document.querySelector(`#${url}`);
+    element?.classList.add('scrollActive');
+    element?.scrollIntoView({ behavior: 'smooth' });
   }
 }
