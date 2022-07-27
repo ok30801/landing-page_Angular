@@ -69,11 +69,8 @@ export class HeaderComponent implements OnInit {
 
   @HostListener("document: scroll")
   scrollFunction() {
-    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      this.headerTop = true
-    } else {
-      this.headerTop = false
-    }
+    document.body.scrollTop > 0 ||
+    document.documentElement.scrollTop > 0 ? this.headerTop = true : this.headerTop = false
   }
 
   scrollPageTo = (url: string) => {
