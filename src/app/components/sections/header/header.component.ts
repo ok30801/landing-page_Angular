@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {CartService} from '../../../services/cart.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ErrorService} from '../../../services/error.service';
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
   errorState = 'start'
 
-  // @ViewChild('scroll') scroll!: Element
+  @Input() currentRout!: string
 
   public mobileMenu: boolean = false
   public headerTop: boolean = false
@@ -69,8 +69,10 @@ export class HeaderComponent implements OnInit {
 
   @HostListener("document: scroll")
   scrollFunction() {
-    document.body.scrollTop > 0 ||
-    document.documentElement.scrollTop > 0 ? this.headerTop = true : this.headerTop = false
+    if (this.currentRout === '/') {
+      document.body.scrollTop > 0 ||
+      document.documentElement.scrollTop > 0 ? this.headerTop = true : this.headerTop = false
+    }
   }
 
   scrollPageTo = (url: string) => {

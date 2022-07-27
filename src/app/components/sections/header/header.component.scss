@@ -1,26 +1,39 @@
 .header {
   &__logo svg-icon {
-    &.logoWhite svg {
-      width: auto;
+    & svg {
+      width: 74px;
       height: 74px;
+    }
+    &.logoWhite svg {
       & g {
         fill: #fff;
       }
     }
     &.logoBlack svg {
-      width: auto;
-      height: 74px;
       & g {
         fill: #333;
       }
     }
   }
-  &__links a {
-    font-size: 14px;
-    transition: all .3s;
-    &:hover {
-      color: #cdcdcd;
-      cursor: pointer;
+  &__links {
+    a {
+      font-size: 14px;
+      transition: all .3s;
+      &:hover {
+        color: #cdcdcd;
+        cursor: pointer;
+      }
+    }
+    &.color {
+      color: #333;
+    }
+  }
+  &__icons {
+    &.dark a {
+      fill: #333333;
+    }
+    &.light a {
+      fill: #ffffff;
     }
   }
 
@@ -39,12 +52,12 @@
 
   &.active {
     background-color: rgba(0, 0, 0, 0.98);
+    color: white;
   }
 
   &__mobile-menu {
-    transition: all 0.5s;
+    transition: all 0.3s;
     &.active {
-      transition: all 0.4s ease-in;
       height: calc(100vh - 104px);
     }
   }

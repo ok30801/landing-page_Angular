@@ -33,6 +33,9 @@
   padding-top: 172px;
   &#special {
     padding-top: 115px;
+    @media(max-width: 768px) {
+      padding-top: 113px;
+    }
   }
 }
 
@@ -65,7 +68,7 @@
     transition: background .5s;
   a {
     height: 40px;
-    width: 40px;
+    //width: 40px;
     display: flex !important;
     align-items: center;
     justify-content: center;

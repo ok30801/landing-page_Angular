@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './shared/layouts/auth/auth.component';
-import { MainComponent } from './shared/layouts/main/main.component';
+import { MainComponent } from './pages/main/main.component';
 import { HeaderComponent } from './components/sections/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
@@ -33,11 +32,13 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SortedProductsPipe } from './pipes/sorted-products.pipe';
+import { CartComponent } from './pages/cart/cart.component';
+import { ProductComponent } from './pages/product/product.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     MainComponent,
     HeaderComponent,
     FormComponent,
@@ -59,6 +60,9 @@ import { SortedProductsPipe } from './pipes/sorted-products.pipe';
     LoaderComponent,
     ErrorComponent,
     SortedProductsPipe,
+    CartComponent,
+    ProductComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     SwiperModule,

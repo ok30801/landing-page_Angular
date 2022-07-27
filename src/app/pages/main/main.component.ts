@@ -3,9 +3,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import * as AOS from 'aos';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss'],
   animations: [
     trigger('title', [
       state('start', style({
@@ -20,11 +20,10 @@ import * as AOS from 'aos';
     ])
   ]
 })
-export class AuthComponent implements OnInit, AfterViewInit {
+export class MainComponent implements OnInit, AfterViewInit {
 
   titleState = 'start'
   modalForm = false
-
   textBtn: string = 'Sign in'
 
   animate() {

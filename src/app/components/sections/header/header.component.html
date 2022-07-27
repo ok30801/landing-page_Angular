@@ -1,8 +1,8 @@
 <div
   class="header fixed w-full transition-all duration-500"
   [class.active]="mobileMenu"
-  [class.bg-white]="headerTop"
-  [class.drop-shadow-xl]="headerTop"
+  [class.bg-white]="headerTop || currentRout !== '/'"
+  [class.drop-shadow-xl]="headerTop  || currentRout !== '/'"
 >
 
   <!--  <app-error></app-error>-->
@@ -24,31 +24,41 @@
          class="header__logo"
          (click)="scrollPageTo(topScroll)"
       >
-        <svg-icon src="assets/logo.svg" class="{{headerTop ? 'logoBlack' : 'logoWhite' }}"></svg-icon>
+        <svg-icon src="assets/logo.svg"
+                  class="{{headerTop ? 'logoBlack' : 'logoWhite'}}"
+                  [class.logoBlack]="currentRout !== '/'"
+        ></svg-icon>
       </a>
 
       <!--Menu-->
       <div
         class="header__links flex gap-5 uppercase font-montserrat font-semibold md:hidden
-        {{headerTop ? 'text-primary' : 'text-white' }}"
+        {{headerTop ? 'text-primary' : 'text-white'}}"
+        [class.color]="currentRout !== '/'"
       >
-        <a *ngFor="let anchor of headerLinks"
+        <a routerLink="/" *ngFor="let anchor of headerLinks"
            (click)="scrollPageTo(anchor.url)"
         >{{anchor.name}}</a>
       </div>
 
       <!--Icons-->
-      <div class="header__icons flex gap-5">
-        <a routerLink="/" class="{{headerTop ? 'fill-primary' : 'fill-white' }}">
-          <svg-icon src="assets/icons/avatar.svg" class="md:fill-white"></svg-icon>
+      <div class="header__icons flex gap-5 {{headerTop ? 'dark' : 'light' }}">
+        <a routerLink="/">
+          <svg-icon src="assets/icons/avatar.svg"
+                    class="md:fill-white"
+                    [class.fill-primary]="currentRout !== '/'"
+          ></svg-icon>
         </a>
-        <div class="relative">
-          <a routerLink="/cart" class="{{headerTop ? 'fill-primary' : 'fill-white' }}">
-            <svg-icon src="assets/icons/cart.svg" class="md:fill-white"></svg-icon>
+        <div class="relative {{headerTop ? 'fill-primary' : 'fill-white' }}">
+          <a routerLink="/cart">
+            <svg-icon src="assets/icons/cart.svg"
+                      class="md:fill-white"
+                      [class.fill-primary]="currentRout !== '/'"
+            ></svg-icon>
           </a>
           <div
-            class="absolute scale-0 transition-transform duration-300 w-7 h-7 rounded-full
-            bg-darkRed flex justify-center items-center bottom-0 right-0"
+            class="absolute scale-0 transition-transform duration-300 w-7 h-7 rounded-full bg-darkRed flex
+            justify-center items-center bottom-0 right-0"
             [class.scale-100]="countProducts"
           >
             {{countProducts}}
@@ -64,7 +74,7 @@
 
     </nav>
 
-    <nav class="header__mobile flex justify-center transition-all">
+    <nav class="header__mobile flex justify-center">
 
       <div
         class="header__mobile-menu h-0 overflow-hidden flex flex-col justify-center text-2xl gap-5"
