@@ -1,6 +1,19 @@
 <button
-  class="p-4 rounded-full min-w-[120px] font-montserrat font-semibold bg-bgButton text-third transition-all duration-300
-  hover:bg-third hover:text-bgButton" data-aos="fade-up"
+  *ngIf="typeComponent === 'catalog' else default"
+  class="button rounded-full font-montserrat font-semibold bg-white text-primary border border-darkRed
+         hover:bg-darkRed hover:text-white text-sm w-full h-11 duration-100"
+  (click)="handleClick.emit()"
 >
   {{text | uppercase}}
 </button>
+
+<ng-template #default>
+  <button
+    class="button rounded-full font-montserrat font-semibold bg-bgButton text-white hover:bg-white hover:text-bgButton
+    w-full h-full"
+    data-aos="fade-up"
+    (click)="handleClick.emit()"
+  >
+    {{text | uppercase}}
+  </button>
+</ng-template>

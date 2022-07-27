@@ -13,6 +13,8 @@ import * as AOS from 'aos';
 })
 export class CatalogComponent implements OnInit {
 
+  textBtn: string = 'In cart'
+  typeComponent = 'catalog'
   title: string = 'catalog'
   count: number = 1
   products!: IProduct[]

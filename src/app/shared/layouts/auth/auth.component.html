@@ -1,8 +1,8 @@
-<section class="auth h-screen relative overflow-hidden bg-fixed bg-cover bg-[center_right] md:bg-center mb-20 text-third">
+<section class="auth h-screen relative overflow-hidden bg-fixed bg-cover bg-[center_right] md:bg-center mb-20 text-white">
 
   <app-header class="absolute w-full z-10"></app-header>
 
-  <div class="auth__block flex flex-col justify-center items-center" [@title]="titleState">
+  <div id="top" class="auth__block flex flex-col justify-center items-center" [@title]="titleState">
     <div class="auth__title text-[56px] uppercase max-w-5xl text-center font-Oswald mb-8">
       E-shop of natural sweets from Siberia
     </div>
@@ -10,15 +10,17 @@
       Don't be eaten by siberian candies. Eat it first!
     </div>
 
-    <app-button [text]="text"></app-button>
+    <app-button class="h-14 min-w-[120px]" [text]="textBtn" (handleClick)="showModalForm()"></app-button>
 
   </div>
 
   <app-form
     *ngIf="modalForm"
     (close)="hideModalForm()"
+    data-aos-duration="200"
   ></app-form>
 </section>
+
 <app-suggestions></app-suggestions>
 <app-catalog></app-catalog>
 <div class="auth__paralax bg-fixed bg-cover">

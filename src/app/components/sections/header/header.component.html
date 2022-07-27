@@ -1,7 +1,7 @@
 <div
   class="header fixed w-full transition-all duration-500"
   [class.active]="mobileMenu"
-  [class.bg-third]="headerTop"
+  [class.bg-white]="headerTop"
   [class.drop-shadow-xl]="headerTop"
 >
 
@@ -20,14 +20,17 @@
 
     <nav class="header__desktop flex justify-between items-center gap-5">
 
-      <a routerLink="/" class="header__logo">
+      <a routerLink="/"
+         class="header__logo"
+         (click)="scrollPageTo(topScroll)"
+      >
         <svg-icon src="assets/logo.svg" class="{{headerTop ? 'logoBlack' : 'logoWhite' }}"></svg-icon>
       </a>
 
       <!--Menu-->
       <div
         class="header__links flex gap-5 uppercase font-montserrat font-semibold md:hidden
-        {{headerTop ? 'text-primary' : 'text-third' }}"
+        {{headerTop ? 'text-primary' : 'text-white' }}"
       >
         <a *ngFor="let anchor of headerLinks"
            (click)="scrollPageTo(anchor.url)"
@@ -36,12 +39,12 @@
 
       <!--Icons-->
       <div class="header__icons flex gap-5">
-        <a routerLink="/" class="{{headerTop ? 'fill-primary' : 'fill-third' }}">
-          <svg-icon src="assets/icons/avatar.svg" class="md:fill-third"></svg-icon>
+        <a routerLink="/" class="{{headerTop ? 'fill-primary' : 'fill-white' }}">
+          <svg-icon src="assets/icons/avatar.svg" class="md:fill-white"></svg-icon>
         </a>
         <div class="relative">
-          <a routerLink="/cart" class="{{headerTop ? 'fill-primary' : 'fill-third' }}">
-            <svg-icon src="assets/icons/cart.svg" class="md:fill-third"></svg-icon>
+          <a routerLink="/cart" class="{{headerTop ? 'fill-primary' : 'fill-white' }}">
+            <svg-icon src="assets/icons/cart.svg" class="md:fill-white"></svg-icon>
           </a>
           <div
             class="absolute scale-0 transition-transform duration-300 w-7 h-7 rounded-full
@@ -69,19 +72,8 @@
       >
         <a *ngFor="let anchor of headerLinks"
            (click)="scrollPageTo(anchor.url); showMobileMenu()"
-        >{{anchor.name}}</a>
+        >{{anchor.name | titlecase}}</a>
       </div>
-
-      <!--      <ul-->
-      <!--        class="header__mobile-menu h-0 overflow-hidden flex flex-col justify-center text-2xl gap-5"-->
-      <!--        [class.active]="mobileMenu"-->
-      <!--      >-->
-      <!--        <li><a href="#" class="mobile-menu__link">ABOUT US</a></li>-->
-      <!--        <li><a href="#" class="mobile-menu__link">CATALOG</a></li>-->
-      <!--        <li><a href="#" class="mobile-menu__link">DELIVERY</a></li>-->
-      <!--        <li><a href="#" class="mobile-menu__link">Reviews</a></li>-->
-      <!--        <li><a href="#" class="mobile-menu__link">Contacts</a></li>-->
-      <!--      </ul>-->
     </nav>
   </div>
 </div>

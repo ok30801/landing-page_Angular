@@ -34,6 +34,5 @@ export class FormComponent implements OnInit {
 
   toggleShowPassword() {
     this.showPassword = !this.showPassword
-    console.log(this.showPassword)
   }
 }

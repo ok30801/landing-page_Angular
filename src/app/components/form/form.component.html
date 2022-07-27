@@ -1,5 +1,7 @@
-<div class="modal-form fixed backdrop-blur-sm bg-black/70 top-0 left-0 z-50 w-full h-full transition-all">
-  <div class="modal-form__body min-h-full flex items-center justify-center py-7 px-3">
+<div class="modal-form fixed backdrop-blur-sm bg-black/70 top-0 left-0 z-50 w-full h-full transition-all"
+     data-aos="zoom-out"
+>
+  <div class="modal-form__body min-h-full flex items-center justify-center py-7 px-3" data-aos="zoom-in" data-aos-duration="300">
     <div class="modal-form__content w-[800px] h-[660px] relative flex justify-end overflow-hidden rounded-xl bg-white">
 
         <span
@@ -29,7 +31,7 @@
         </div>
 
         <div class="modal-form__text divider relative flex justify-center w-full">
-          <div class="divider z-50 w-12 text-center bg-third">или</div>
+          <div class="divider z-50 w-12 text-center bg-white">или</div>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()" class="w-full flex flex-col gap-5">
@@ -94,8 +96,8 @@
           <div class="flex justify-center w-full">
             <button
               [class.modal-form__btn-disabled]="loginForm.invalid"
-              class="p-4 rounded-full w-[120px] font-montserrat uppercase font-semibold bg-bgButton text-third
-          hover:bg-third hover:text-bgButton border hover:border-bgButton transition-all duration-500"
+              class="p-4 rounded-full w-[120px] font-montserrat uppercase font-semibold bg-bgButton text-white
+          hover:bg-white hover:text-bgButton border hover:border-bgButton transition-all duration-500"
             >
               Sign in
             </button>

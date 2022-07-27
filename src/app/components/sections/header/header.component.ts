@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {CartService} from '../../../services/cart.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ErrorService} from '../../../services/error.service';
@@ -25,15 +25,19 @@ export class HeaderComponent implements OnInit {
 
   errorState = 'start'
 
+  @ViewChild('scroll') scroll!: Element
+
   public mobileMenu: boolean = false
   public headerTop: boolean = false
   public countProducts!: number
 
+  topScroll = 'top'
+
   headerLinks = [
-    { id: 'link_1', name: 'About us', url: 'about-us' },
-    { id: 'link_2', name: 'Catalog', url: 'catalog' },
-    { id: 'link_2', name: 'Special', url: 'special' },
-    { id: 'link_2', name: 'Manufacture', url: 'manufacture' },
+    { id: 'link_1', name: 'about us', url: 'about-us' },
+    { id: 'link_2', name: 'catalog', url: 'catalog' },
+    { id: 'link_2', name: 'special', url: 'special' },
+    { id: 'link_2', name: 'manufacture', url: 'manufacture' },
     { id: 'link_3', name: 'delivery', url: 'delivery' },
     { id: 'link_4', name: 'faq', url: 'faq' },
     { id: 'link_5', name: 'reviews', url: 'reviews' },

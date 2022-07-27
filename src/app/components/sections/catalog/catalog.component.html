@@ -1,4 +1,4 @@
-<section id="catalog" class="catalog py-7 bg-third overflow-hidden">
+<section id="catalog" class="catalog py-7 bg-white overflow-hidden">
   <app-title [text]="title"></app-title>
 
   <div *ngIf="loading" class="container text-center">
@@ -9,8 +9,9 @@
     <div class="relative">
       <ng-select
         [(ngModel)]="selectedOption"
-        class="w-40 h-11 border-2 border-darkRed rounded-md"
-        [clearable]="false"
+        class="w-40 h-11 border-2 border-darkRed rounded-md sm:w-full sm:mb-5"
+        [clearable]=false
+        [markFirst]=false
       >
         <ng-option *ngFor="let option of options" [value]="option.label">{{option.label}}</ng-option>
       </ng-select>
@@ -30,7 +31,7 @@
       (pageChange)="page = $event"
       previousLabel=""
       nextLabel=""
-      data-aos="fade-down-left"
+      data-aos="fade-left"
     ></pagination-controls>
   </div>
 
@@ -40,7 +41,10 @@
           sortedProducts: selectedOption.toLowerCase() |
           paginate: { itemsPerPage: 8, currentPage: page, totalItems: totalPage}, let idx = index"
       class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
-      items-center h-full overflow-hidden" data-aos="fade-left" data-aos-offset="500"
+      items-center h-full overflow-hidden"
+      data-aos="fade-left"
+      data-aos-duration="800"
+      data-aos-offset="500"
     >
 
       <div class=" text-four text-sm  font-Oswald">{{product.categoryName | uppercase}}</div>
@@ -86,20 +90,19 @@
         </div>
       </div>
 
-      <button
-        class="rounded-full w-full h-11 font-montserrat uppercase text-sm font-semibold bg-third text-primary border border-darkRed
-         hover:bg-darkRed hover:text-third transition-all duration-300 flex items-center justify-center"
-        (click)="inCart(product.id)"
-      >
-        in cart
-      </button>
+      <app-button
+        class="w-full"
+        [typeComponent] = 'typeComponent'
+        [text]="textBtn"
+        (handleClick)="inCart(product.id)"
+      ></app-button>
 
-      <div *ngIf="product?.discount" class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-third -rotate-45 shadow-lg font-Oswald">
+      <div *ngIf="product?.discount" class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-white -rotate-45 shadow-lg font-Oswald">
         -{{product.discount}}%
       </div>
 
       <div *ngIf="product.newProduct"
-           class="absolute top-3 -right-7 w-28 h-7 bg-green text-third rotate-45 normal-case shadow-lg font-Oswald">
+           class="absolute top-3 -right-7 w-28 h-7 bg-green text-white rotate-45 normal-case shadow-lg font-Oswald">
         New
       </div>
 

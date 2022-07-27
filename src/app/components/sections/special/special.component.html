@@ -1,13 +1,19 @@
-<div id="special" class="bg-third"></div>
+<div id="special" class="bg-white"></div>
 <section class="special h-[350px] relative overflow-hidden bg-fixed bg-cover flex items-center">
   <div class="container">
     <div class="special__block flex flex-col justify-center items-center">
       <div class="special__title text-5xl uppercase text-center text-bgButton font-Oswald mb-8"
            data-aos="fade-right"
+           data-aos-offset="500"
+           data-aos-duration="800"
       >
         special
       </div>
-      <div class="auth__description font-montserrat mb-12 max-w-[650px] text-center text-third" data-aos="fade-left">
+      <div class="auth__description font-montserrat mb-12 max-w-[650px] text-center text-white"
+           data-aos="fade-left"
+           data-aos-offset="500"
+           data-aos-duration="800"
+      >
         <div>
           (This is an example. You need a real offer.)
         </div>
@@ -18,7 +24,7 @@
           natural Siberian berry marmalade
         </div>
       </div>
-      <app-button [text]="text"></app-button>
+      <app-button class="h-14 min-w-[120px]" [text]="text"></app-button>
     </div>
   </div>
 </section>
