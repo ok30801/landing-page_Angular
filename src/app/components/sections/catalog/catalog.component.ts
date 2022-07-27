@@ -1,8 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {CartService} from '../../../services/cart.service';
 import {IProduct} from '../../../interfaces/interfaces';
-import * as AOS from 'aos';
 // import {Observable} from 'rxjs';
 // import {map, tap} from 'rxjs/operators';
 
@@ -42,7 +41,7 @@ export class CatalogComponent implements OnInit {
     })
   }
 
-  removeProduct(id: number) {
+  decreaseCountProduct(id: number) {
     this.products.map((item: IProduct) => {
       if (id === item.id && item.amount > 1) {
         item.amount--
@@ -56,11 +55,10 @@ export class CatalogComponent implements OnInit {
     //     }
     //   })
     // )
-
   }
 
-  addProduct(id: number) {
-    console.log(id)
+  increaseCountProduct(id: number) {
+    // console.log(this.products)
     this.products.map((item: IProduct) => {
       if (id === item.id) {
         item.amount++
@@ -80,7 +78,7 @@ export class CatalogComponent implements OnInit {
   inCart(id: number) {
     this.products.map((item: IProduct) => {
       if (id === item.id) {
-        this.cartService.addProductCart(item)
+        this.cartService.addProductCart(item, id)
       }
     })
     // this.products$.pipe(
@@ -93,5 +91,4 @@ export class CatalogComponent implements OnInit {
     //   })
     // )
   }
-
 }

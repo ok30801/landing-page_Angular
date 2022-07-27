@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {CartService} from '../../../services/cart.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ErrorService} from '../../../services/error.service';
@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
   errorState = 'start'
 
-  @ViewChild('scroll') scroll!: Element
+  // @ViewChild('scroll') scroll!: Element
 
   public mobileMenu: boolean = false
   public headerTop: boolean = false
@@ -53,6 +53,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cart.cart$
       .subscribe(data => {
+        console.log('data', data)
         let amountFull: any = null
         data.forEach(item => {
           amountFull += item.amount

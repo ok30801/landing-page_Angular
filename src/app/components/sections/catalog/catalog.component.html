@@ -76,7 +76,7 @@
         <div
           class="w-1/5 h-full border-r-2 border-darkRed flex justify-center items-center catalog__button-count
           hover:bg-darkRed transition-all duration-300"
-          (click)="removeProduct(product.id)"
+          (click)="decreaseCountProduct(product.id)"
         >
           <svg-icon src="assets/icons/minus.svg"></svg-icon>
         </div>
@@ -84,7 +84,7 @@
         <div
           class="w-1/5 h-full border-l-2 border-darkRed flex justify-center items-center catalog__button-count
           hover:bg-darkRed transition-all duration-300"
-          (click)="addProduct(product.id)"
+          (click)="increaseCountProduct(product.id)"
         >
           <svg-icon src="assets/icons/plus.svg"></svg-icon>
         </div>

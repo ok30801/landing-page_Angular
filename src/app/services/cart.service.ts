@@ -12,9 +12,13 @@ export class CartService {
 
   constructor() { }
 
-  addProductCart(product: IProduct) {
-    this.cart.push(product);
-    console.log(this.cart)
+  addProductCart(product: IProduct, id: number) {
+
+    if (this.cart.find(item => item.id === id)) {
+      this.cart.map(product => product.amount + 1)
+    } else {
+      this.cart.push(product);
+    }
     this.cart$.next(this.cart)
   }
 }
