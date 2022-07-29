@@ -1,5 +1,17 @@
-.auth {
-  &__block {
-    //height: calc(100vh - (-380px));
+.cart {
+  //height: calc(100vh - 425px);
+  &__button-count:hover {
+    & svg-icon {
+      fill: #ffffff;
+    }
   }
+  &__total-price-divide:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 8px;
+    display: block;
+    border-bottom: 1px dotted #cdcdcd;
+  }
+
 }

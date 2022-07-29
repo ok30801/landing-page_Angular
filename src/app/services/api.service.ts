@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError, delay, map, Observable, retry, throwError} from 'rxjs';
+import {BehaviorSubject, throwError} from 'rxjs';
 import {IProduct} from '../interfaces/interfaces';
 import {ErrorService} from './error.service';
 
@@ -10,22 +10,29 @@ import {ErrorService} from './error.service';
 })
 export class ApiService {
 
+  // private errorHandler(error: HttpErrorResponse) {
+  //   this.errorService.handle(error.message)
+  //   return throwError(() => error.message)
+  // }
+
+
+  public allProducts: IProduct[] = []
+  public allProducts$ = new BehaviorSubject<IProduct[]>([]);
+  public loading$ = new BehaviorSubject<boolean>(false);
+
   constructor(
     private http: HttpClient,
     private errorService: ErrorService
-  ) { }
-
-  getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(environment.getProducts)
-      .pipe(
-        delay(1000),
-        retry(2),
-        catchError(this.errorHandler.bind(this))
-      )
+  ) {
   }
 
-  private errorHandler(error: HttpErrorResponse) {
-    this.errorService.handle(error.message)
-    return throwError(() => error.message)
+  public getProducts() {
+    this.loading$.next(true);
+    this.http.get<IProduct[]>(environment.getProducts)
+      .subscribe(data => {
+        this.allProducts = data
+        this.allProducts$.next(this.allProducts)
+        this.loading$.next(false)
+      })
   }
 }

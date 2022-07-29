@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {CartService} from '../../../services/cart.service';
 import {IProduct} from '../../../interfaces/interfaces';
-// import {Observable} from 'rxjs';
-// import {map, tap} from 'rxjs/operators';
+import {delay, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-catalog',
@@ -11,84 +10,65 @@ import {IProduct} from '../../../interfaces/interfaces';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent implements OnInit {
-
-  textBtn: string = 'In cart'
+  page = 1
+  loading = false
+  count: number = 1
+  selectedOption = ''
   typeComponent = 'catalog'
   title: string = 'catalog'
-  count: number = 1
-  products!: IProduct[]
-  // products$!: Observable<IProduct[]>
-  loading = false
-  totalPage!: number
-  page = 1
-  selectedOption = ''
+  textBtn: string = 'In cart'
+
+  public products$!: Observable<IProduct[]>;
 
   options = [
-    { value: 1, label: 'Price' },
-    { value: 2, label: 'Discount' },
-    { value: 3, label: 'Category' },
-    { value: 4, label: 'New product' }
+    {label: 'price'},
+    {label: 'rating'},
+    {label: 'discount'},
+    {label: 'category'},
+    {label: 'new product'}
   ]
 
-  constructor(private apiService: ApiService, private cartService: CartService) { }
+  constructor(
+    private apiService: ApiService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
     this.loading = true
-    this.apiService.getProducts().subscribe(data => {
-      this.products = data
-      this.totalPage = data.length
-      this.loading = false
-    })
+    this.products$ = this.apiService.allProducts$
+    this.apiService.loading$
+      .pipe(delay(500))
+      .subscribe(data => this.loading = data)
+    this.apiService.getProducts()
   }
 
   decreaseCountProduct(id: number) {
-    this.products.map((item: IProduct) => {
-      if (id === item.id && item.amount > 1) {
-        item.amount--
-      }
-    })
-
-    // this.products$.pipe(
-    //   map((item: any, index: number) => {
-    //     if (idx === index && item.amount > 1) {
-    //       item.amount--
-    //     }
-    //   })
-    // )
+    this.apiService.allProducts
+      .map((item: any) => {
+          if (id === item.id && item.amount > 1) {
+            item.amount--
+          }
+        }
+      )
   }
 
   increaseCountProduct(id: number) {
-    // console.log(this.products)
-    this.products.map((item: IProduct) => {
-      if (id === item.id) {
-        item.amount++
+    this.apiService.allProducts
+    .map((item: any) => {
+        if (id === item.id) {
+          item.amount++
+        }
       }
-    })
-
-    // this.products$.pipe(
-    //   map((item: any, index: number) => {
-    //     if (idx === index) {
-    //       console.log(index)
-    //       item.amount++
-    //     }
-    //   })
-    // )
+    )
   }
 
   inCart(id: number) {
-    this.products.map((item: IProduct) => {
-      if (id === item.id) {
-        this.cartService.addProductCart(item, id)
+    this.apiService.allProducts
+      .map((item: any) => {
+        if (id === item.id) {
+          this.cartService.addProductCart(item, id)
+        }
       }
-    })
-    // this.products$.pipe(
-    //   map((item: any, index: number) => {
-    //
-    //     if (idx === index) {
-    //       console.log(item)
-    //       this.cartService.addProductCart(item)
-    //     }
-    //   })
-    // )
+    )
   }
 }

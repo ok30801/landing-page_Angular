@@ -11,9 +11,8 @@
         [(ngModel)]="selectedOption"
         class="w-40 h-11 border-2 border-darkRed rounded-md sm:w-full sm:mb-5"
         [clearable]=false
-        [markFirst]=false
       >
-        <ng-option *ngFor="let option of options" [value]="option.label">{{option.label}}</ng-option>
+        <ng-option *ngFor="let option of options" [value]="option.label">{{option.label | titlecase}}</ng-option>
       </ng-select>
       <div
         class="absolute top-2 left-2"
@@ -35,77 +34,87 @@
     ></pagination-controls>
   </div>
 
-  <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center mb-10 -z-50">
-    <div
-      *ngFor="let product of products |
-          sortedProducts: selectedOption.toLowerCase() |
-          paginate: { itemsPerPage: 8, currentPage: page, totalItems: totalPage}, let idx = index"
-      class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
-      items-center h-full overflow-hidden"
-      data-aos="fade-left"
-      data-aos-duration="800"
-      data-aos-offset="500"
-    >
+  <div
+    *ngIf="products$ | async as products"
+    class="p-5 border-lightGray hover:shadow-lg transition-all flex flex-col
+    items-center h-full"
+    [class.hidden]="loading"
+    data-aos="fade-left"
+    data-aos-duration="800"
+    data-aos-offset="500"
+  >
+    <div class="container grid grid-cols-gridCol gap-3 font-Oswald text-lg text-center mb-10 -z-50">
+      <div
+        *ngFor="let product of products | sortedProducts: selectedOption.toLowerCase() |
+          paginate: { itemsPerPage: 8, currentPage: page}, let idx = index"
+        class="border p-5 border-lightGray relative hover:cursor-pointer hover:shadow-lg transition-all flex flex-col
+        items-center h-full overflow-hidden"
+        data-aos="fade-left"
+        data-aos-duration="800"
+        data-aos-offset="500"
+      >
 
-      <div class=" text-four text-sm  font-Oswald">{{product.categoryName | uppercase}}</div>
+        <div class=" text-four text-sm  font-Oswald">{{product.categoryName | uppercase}}</div>
 
-      <div class="flex grow mb-10  font-Oswald">{{product.productName | uppercase}}</div>
+        <div class="flex grow mb-10  font-Oswald">{{product.productName | uppercase}}</div>
 
-      <div class="mb-5">
-        <img src="{{product.img}}" alt="{{product.productName}}">
-      </div>
-
-      <div *ngIf="!product.stars else rating" class="mb-5">
-        <img src="../../../../assets/img/rating/no-rating.png" alt="stars">
-      </div>
-
-      <ng-template #rating>
-        <div *ngIf="product.stars === 4 else fullRating" class="mb-5">
-          <img src="../../../../assets/img/rating/four-star.png" alt="stars">
+        <div class="mb-5">
+          <img src="{{product.img}}" alt="{{product.productName}}">
         </div>
-        <ng-template #fullRating>
-          <div class="mb-5">
-            <img src="../../../../assets/img/rating/five-star.png" alt="stars">
+
+        <div *ngIf="!product.stars else rating" class="mb-5">
+          <img src="../../../../assets/img/rating/no-rating.png" alt="stars">
+        </div>
+
+        <ng-template #rating>
+          <div *ngIf="product.stars === 4 else fullRating" class="mb-5">
+            <img src="../../../../assets/img/rating/four-star.png" alt="stars">
           </div>
+          <ng-template #fullRating>
+            <div class="mb-5">
+              <img src="../../../../assets/img/rating/five-star.png" alt="stars">
+            </div>
+          </ng-template>
         </ng-template>
-      </ng-template>
 
-      <div class="font-montserrat font-extrabold text-2xl mb-5">{{product.price | currency}}</div>
+        <div class="font-montserrat font-extrabold text-2xl mb-5">{{product.price | currency}}</div>
 
-      <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
-        <div
-          class="w-1/5 h-full border-r-2 border-darkRed flex justify-center items-center catalog__button-count
+        <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
+          <div
+            class="w-1/5 h-full border-r-2 border-darkRed flex justify-center items-center catalog__button-count
           hover:bg-darkRed transition-all duration-300"
-          (click)="decreaseCountProduct(product.id)"
-        >
-          <svg-icon src="assets/icons/minus.svg"></svg-icon>
-        </div>
-        <div class="w-3/5 text-3xl font-montserrat">{{product.amount}}</div>
-        <div
-          class="w-1/5 h-full border-l-2 border-darkRed flex justify-center items-center catalog__button-count
+            (click)="decreaseCountProduct(product.id)"
+          >
+            <svg-icon src="assets/icons/minus.svg"></svg-icon>
+          </div>
+          <div class="w-3/5 text-3xl font-montserrat">{{product.amount}}</div>
+          <div
+            class="w-1/5 h-full border-l-2 border-darkRed flex justify-center items-center catalog__button-count
           hover:bg-darkRed transition-all duration-300"
-          (click)="increaseCountProduct(product.id)"
-        >
-          <svg-icon src="assets/icons/plus.svg"></svg-icon>
+            (click)="increaseCountProduct(product.id)"
+          >
+            <svg-icon src="assets/icons/plus.svg"></svg-icon>
+          </div>
         </div>
+
+        <app-button
+          class="w-full"
+          [typeComponent]='typeComponent'
+          [text]="textBtn"
+          (handleClick)="inCart(product.id)"
+        ></app-button>
+
+        <div *ngIf="product?.discount"
+             class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-white -rotate-45 shadow-lg font-Oswald">
+          -{{product.discount}}%
+        </div>
+
+        <div *ngIf="product.newProduct"
+             class="absolute top-3 -right-7 w-28 h-7 bg-green text-white rotate-45 normal-case shadow-lg font-Oswald">
+          New
+        </div>
+
       </div>
-
-      <app-button
-        class="w-full"
-        [typeComponent] = 'typeComponent'
-        [text]="textBtn"
-        (handleClick)="inCart(product.id)"
-      ></app-button>
-
-      <div *ngIf="product?.discount" class="absolute top-3 -left-7 w-28 h-7 bg-darkRed text-white -rotate-45 shadow-lg font-Oswald">
-        -{{product.discount}}%
-      </div>
-
-      <div *ngIf="product.newProduct"
-           class="absolute top-3 -right-7 w-28 h-7 bg-green text-white rotate-45 normal-case shadow-lg font-Oswald">
-        New
-      </div>
-
     </div>
   </div>
 </section>

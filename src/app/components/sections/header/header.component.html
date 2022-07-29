@@ -43,13 +43,13 @@
 
       <!--Icons-->
       <div class="header__icons flex gap-5 {{headerTop ? 'dark' : 'light' }}">
-        <a routerLink="/">
-          <svg-icon src="assets/icons/avatar.svg"
-                    class="md:fill-white"
-                    [class.fill-primary]="currentRout !== '/'"
-          ></svg-icon>
-        </a>
-        <div class="relative {{headerTop ? 'fill-primary' : 'fill-white' }}">
+
+        <div
+          *ngIf="countProducts$ | async as countProducts"
+          class="relative {{headerTop ? 'fill-primary' : 'fill-white' }}"
+          data-aos="zoom-in"
+          data-aos-duration="200"
+        >
           <a routerLink="/cart">
             <svg-icon src="assets/icons/cart.svg"
                       class="md:fill-white"
@@ -57,13 +57,16 @@
             ></svg-icon>
           </a>
           <div
-            class="absolute scale-0 transition-transform duration-300 w-7 h-7 rounded-full bg-darkRed flex
-            justify-center items-center bottom-0 right-0"
-            [class.scale-100]="countProducts"
-          >
+            class="absolute text-lg w-7 h-7 rounded-full bg-red-600 flex justify-center items-center bottom-0 right-0 text-white">
             {{countProducts}}
           </div>
         </div>
+        <a routerLink="/">
+          <svg-icon src="assets/icons/avatar.svg"
+                    class="md:fill-white"
+                    [class.fill-primary]="currentRout !== '/'"
+          ></svg-icon>
+        </a>
       </div>
 
       <!--Burger-->

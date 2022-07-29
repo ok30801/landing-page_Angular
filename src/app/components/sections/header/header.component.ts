@@ -2,6 +2,7 @@ import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {CartService} from '../../../services/cart.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {ErrorService} from '../../../services/error.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -23,16 +24,8 @@ import {ErrorService} from '../../../services/error.service';
 })
 export class HeaderComponent implements OnInit {
 
-  errorState = 'start'
-
-  @Input() currentRout!: string
-
-  public mobileMenu: boolean = false
-  public headerTop: boolean = false
-  public countProducts!: number
-
   topScroll = 'top'
-
+  errorState = 'start'
   headerLinks = [
     { id: 'link_1', name: 'about us', url: 'about-us' },
     { id: 'link_2', name: 'catalog', url: 'catalog' },
@@ -44,26 +37,24 @@ export class HeaderComponent implements OnInit {
     { id: 'link_6', name: 'feedback', url: 'feedback' },
   ]
 
-  constructor(private cart: CartService, public errorService: ErrorService) { }
+  @Input() currentRout!: string
 
+  public mobileMenu: boolean = false
+  public headerTop: boolean = false
+  public countProducts$!: Observable<number>;
+
+  constructor(private cartService: CartService, public errorService: ErrorService) { }
+
+  ngOnInit(): void {
+    this.countProducts$ = this.cartService.countProducts$
+    this.cartService.countProductInCart()
+    this.animate()
+  }
   animate() {
     this.errorState = this.errorState === 'start' ? 'end' : 'start'
   }
 
-  ngOnInit(): void {
-    this.cart.cart$
-      .subscribe(data => {
-        console.log('data', data)
-        let amountFull: any = null
-        data.forEach(item => {
-          amountFull += item.amount
-        })
-        return this.countProducts = amountFull
-      })
-    this.animate()
-  }
-
-  showMobileMenu = () => {
+  showMobileMenu() {
     this.mobileMenu = !this.mobileMenu
   }
 
