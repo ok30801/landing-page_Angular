@@ -5,8 +5,9 @@ export interface IProduct {
   img: string,
   stars: number,
   price: number,
+  oldPrice?: number
   discount: number,
   new: boolean,
   amount: number,
-  newProduct: boolean
+  newProduct: boolean,
 }

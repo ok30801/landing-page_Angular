@@ -77,7 +77,15 @@
           </ng-template>
         </ng-template>
 
-        <div class="font-montserrat font-extrabold text-2xl mb-5">{{product.price | currency}}</div>
+        <div
+          class="w-full"
+          [class.flex]="product.oldPrice"
+          [class.justify-between]="product.oldPrice"
+        >
+          <div class="font-montserrat font-extrabold text-2xl mb-5">{{product.price | currency}}</div>
+          <div class="line-through text-four">{{product.oldPrice | number:'2.1-2' | currency}}</div>
+        </div>
+
 
         <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
           <div

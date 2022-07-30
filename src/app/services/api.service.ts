@@ -30,6 +30,11 @@ export class ApiService {
     this.loading$.next(true);
     this.http.get<IProduct[]>(environment.getProducts)
       .subscribe(data => {
+        data.find(item => {
+          if (item.discount) {
+            item.oldPrice = item.price / ((100 - item.discount ) * 0.01)
+          }
+        })
         this.allProducts = data
         this.allProducts$.next(this.allProducts)
         this.loading$.next(false)
