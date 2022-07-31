@@ -14,11 +14,15 @@ export class CartComponent implements OnInit {
   textBtn: string = 'In cart'
 
   public products$!: Observable<IProduct[]>;
+  public totalPrice$!: Observable<number>;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.products$ = this.cartService.cart$
+    this.cartService.countTotalPrice()
+    this.totalPrice$ = this.cartService.totalPrice$
+
     this.products$.subscribe(data => {
       if (!data.length) {
         this.cartService.getDataLocalStorage()
@@ -59,4 +63,9 @@ export class CartComponent implements OnInit {
     //   })
     // )
   }
+  trackBy(index: number, item: any) {
+
+  }
+
+
 }

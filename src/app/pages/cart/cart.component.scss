@@ -1,5 +1,5 @@
 .cart {
-  //height: calc(100vh - 425px);
+  min-height: calc(100vh - 350px);
   &__button-count:hover {
     & svg-icon {
       fill: #ffffff;

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, map, scan} from 'rxjs';
 import {IProduct} from '../interfaces/interfaces';
 
 @Injectable({
@@ -13,7 +13,11 @@ export class CartService {
   public countProducts!: number
   public countProducts$ = new BehaviorSubject<number>(0);
 
-  constructor() { }
+  public totalPrice!: number
+  public totalPrice$ = new BehaviorSubject<number>(0)
+
+  constructor() {
+  }
 
   public addProductCart(product: IProduct, id: number) {
     if (this.cart.find(item => item.id === id)) {
@@ -48,5 +52,14 @@ export class CartService {
   getDataLocalStorage() {
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]')
     this.cart$.next(this.cart)
+  }
+
+  countTotalPrice() {
+    this.cart$.subscribe(data => {
+      this.totalPrice = data.reduce((acc, el) => {
+        return acc + el.price
+      }, 0)
+      this.totalPrice$.next(this.totalPrice)
+    })
   }
 }
