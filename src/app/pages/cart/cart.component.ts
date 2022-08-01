@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IProduct} from '../../interfaces/interfaces';
 import {CartService} from '../../services/cart.service';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -10,13 +10,14 @@ import {Observable} from 'rxjs';
 })
 export class CartComponent implements OnInit {
 
-  typeComponent: string = 'catalog'
-  textBtn: string = 'In cart'
+  typeComponent: string = 'cart'
+  textBtn: string = 'Clear cart'
 
   public products$!: Observable<IProduct[]>;
   public totalPrice$!: Observable<number>;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
     this.products$ = this.cartService.cart$
@@ -31,41 +32,24 @@ export class CartComponent implements OnInit {
   }
 
   decreaseCountProduct(id: number) {
-    // this.products.map((item: IProduct) => {
-    //   if (id === item.id && item.amount > 1) {
-    //     item.amount--
-    //   }
-    // })
-
-    // this.products$.pipe(
-    //   map((item: any, index: number) => {
-    //     if (idx === index && item.amount > 1) {
-    //       item.amount--
-    //     }
-    //   })
-    // )
+    this.cartService.cart
+      .map((item: any) => {
+        if (id === item.id && item.amount > 1) {
+          item.amount--
+        }
+      })
   }
 
   increaseCountProduct(id: number) {
-    // console.log(this.products)
-    // this.products.map((item: IProduct) => {
-    //   if (id === item.id) {
-    //     item.amount++
-    //   }
-    // })
-
-    // this.products$.pipe(
-    //   map((item: any, index: number) => {
-    //     if (idx === index) {
-    //       console.log(index)
-    //       item.amount++
-    //     }
-    //   })
-    // )
+    this.cartService.cart
+      .map((item: any) => {
+        if (id === item.id) {
+          item.amount++
+        }
+      })
   }
+
   trackBy(index: number, item: any) {
 
   }
-
-
 }

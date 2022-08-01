@@ -90,7 +90,7 @@
         <div class="flex items-center border-2 border-darkRed rounded h-10 w-full mb-5">
           <div
             class="w-1/5 h-full border-r-2 border-darkRed flex justify-center items-center catalog__button-count
-          hover:bg-darkRed transition-all duration-300"
+          hover:bg-darkRed transition-all duration-300 select-none"
             (click)="decreaseCountProduct(product.id)"
           >
             <svg-icon src="assets/icons/minus.svg"></svg-icon>
@@ -98,7 +98,7 @@
           <div class="w-3/5 text-3xl font-montserrat">{{product.amount}}</div>
           <div
             class="w-1/5 h-full border-l-2 border-darkRed flex justify-center items-center catalog__button-count
-          hover:bg-darkRed transition-all duration-300"
+          hover:bg-darkRed transition-all duration-300 select-none"
             (click)="increaseCountProduct(product.id)"
           >
             <svg-icon src="assets/icons/plus.svg"></svg-icon>

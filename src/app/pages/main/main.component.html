@@ -8,7 +8,12 @@
       Don't be eaten by siberian candies. Eat it first!
     </div>
 
-    <app-button class="h-14 min-w-[120px]" [text]="textBtn" (handleClick)="showModalForm()"></app-button>
+    <app-button
+      class="h-14 min-w-[120px]"
+      [text]="textBtn"
+      [typeComponent]='typeComponent'
+      (handleClick)="showModalForm()"
+    ></app-button>
 
   </div>
 

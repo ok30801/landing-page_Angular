@@ -9,6 +9,7 @@
 
 <ng-template #default>
   <button
+    *ngIf="typeComponent === 'main' else cartBtn"
     class="button rounded-full font-montserrat font-semibold bg-bgButton text-white hover:bg-white hover:text-bgButton
     w-full h-full"
     (click)="handleClick.emit()"
@@ -16,3 +17,13 @@
     {{text | uppercase}}
   </button>
 </ng-template>
+<ng-template #cartBtn>
+  <button
+    class="button rounded font-montserrat font-semibold bg-white text-primary hover:bg-darkRed hover:text-white
+    text-sm w-full h-full duration-100 border-dashed border-2 border-darkRed"
+    (click)="handleClick.emit()"
+  >
+    {{text | uppercase}}
+  </button>
+</ng-template>
+

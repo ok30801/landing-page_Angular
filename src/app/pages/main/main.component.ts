@@ -24,6 +24,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   titleState = 'start'
   modalForm = false
   textBtn: string = 'Sign in'
+  typeComponent: string = 'main'
 
   animate() {
     this.titleState = this.titleState === 'start' ? 'end' : 'start'

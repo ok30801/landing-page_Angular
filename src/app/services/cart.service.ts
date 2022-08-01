@@ -13,7 +13,7 @@ export class CartService {
   public countProducts!: number
   public countProducts$ = new BehaviorSubject<number>(0);
 
-  public totalPrice!: number
+  public totalPrice: number
   public totalPrice$ = new BehaviorSubject<number>(0)
 
   constructor() {

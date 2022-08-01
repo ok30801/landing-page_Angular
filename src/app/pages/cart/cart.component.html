@@ -9,7 +9,7 @@
     <div class=" flex flex-col w-1/2 gap-5" data-aos="fade-right">
       <div
         *ngFor="let product of products$ | async; trackBy: trackBy"
-        class="p-4 bg-white"
+        class="p-4 bg-white select-none"
       >
         <div class="flex gap-5">
           <div class="flex items-center">
@@ -18,7 +18,7 @@
 
           <div class="flex flex-col w-full justify-between gap-5">
             <div class="flex justify-between w-full ">
-              <div class="text-primary text-xl max-w-[380px]">
+              <div class="text-primary text-xl max-w-[380px] select-none">
                 {{product.productName | titlecase}}
               </div>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -30,7 +30,7 @@
               <div class="flex w-[150px] items-center border border-darkRed rounded h-8">
                 <div
                   class="w-1/5 h-full border-r border-darkRed flex justify-center items-center cart__button-count
-                  hover:bg-darkRed transition-all duration-300"
+                  hover:bg-darkRed hover:cursor-pointer transition-all duration-300"
                   (click)="decreaseCountProduct(product.id)"
                 >
                   <svg-icon src="assets/icons/minus.svg"></svg-icon>
@@ -38,7 +38,7 @@
                 <div class="w-3/5 text-xl text-center font-montserrat">{{product.amount}}</div>
                 <div
                   class="w-1/5 h-full border-l border-darkRed flex justify-center items-center cart__button-count
-                hover:bg-darkRed transition-all duration-300"
+                hover:bg-darkRed hover:cursor-pointer transition-all duration-300"
                   (click)="increaseCountProduct(product.id)"
                 >
                   <svg-icon src="assets/icons/plus.svg"></svg-icon>
@@ -52,11 +52,22 @@
           </div>
         </div>
       </div>
-      <div class="bg-white h-[79px] p-5 flex justify-between items-center font-montserrat font-medium text-lg font-bold gap-x-1.5">
-        <div class="cart__total-price whitespace-nowrap">Total price:</div>
-        <div class="cart__total-price-divide relative w-full h-7"></div>
-        <div>{{totalPrice$ | async }}</div>
+      <div class="flex justify-between gap-5">
+        <div class="bg-white h-[79px] p-5 flex justify-between items-center font-montserrat font-medium text-lg
+        font-bold gap-x-1.5 w-full"
+        >
+          <ng-container>
+            <div class="cart__total-price whitespace-nowrap">Total price:</div>
+            <div class="cart__total-price-divide relative w-full h-7"></div>
+            <div>${{totalPrice$ | async }}</div>
+          </ng-container>
+        </div>
+        <app-button
+          class="w-40"
+          [text]="textBtn"
+        ></app-button>
       </div>
+
     </div>
     <div class="w-1/2 min-h-[500px] bg-white flex justify-center items-center" data-aos="fade-left">Form</div>
   </div>
