@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, map, scan} from 'rxjs';
+import {BehaviorSubject, delay} from 'rxjs';
 import {IProduct} from '../interfaces/interfaces';
 
 @Injectable({
@@ -9,19 +9,15 @@ export class CartService {
 
   public cart: IProduct[] = []
   public cart$ = new BehaviorSubject<IProduct[]>([]);
-
   public countProducts!: number
   public countProducts$ = new BehaviorSubject<number>(0);
-
   public allPrice: number
   public allPrice$ = new BehaviorSubject<number>(0)
 
-  public totalPriceProductItem: number
-  public totalPriceProductItem$ = new BehaviorSubject<number>(0)
+  constructor() {
+  }
 
-  constructor() { }
-
-  public addProductCart(product: IProduct, id: number) {
+  addProductCart(product: IProduct, id: number) {
     if (this.cart.find(item => item.id === id)) {
       this.cart.map(product => product.amount + 1)
     } else {
@@ -51,11 +47,6 @@ export class CartService {
     })
   }
 
-  getDataLocalStorage() {
-    this.cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    this.cart$.next(this.cart)
-  }
-
   countAllPrice() {
     this.cart$.subscribe(data => {
       this.allPrice = data.reduce((acc, product) => acc + product.price * product.amount, 0)
@@ -69,6 +60,32 @@ export class CartService {
         item.totalPrice = item.price * item.amount
       }
     })
+    this.cart$.next(this.cart)
+    localStorage.setItem('cart', JSON.stringify(this.cart))
+  }
+
+  getDataLocalStorage() {
+    this.cart = JSON.parse(localStorage.getItem('cart') || '[]')
+    if (this.cart.length) {
+      this.cart$.next(this.cart)
+    }
+  }
+
+  removeProduct(id: number) {
+    const index = this.cart.map(item => item.id).indexOf(id)
+    this.cart.splice(index, 1)
+
+    const localDataCart = JSON.parse(localStorage.getItem('cart') || '[]')
+    const idx = localDataCart.map((item: IProduct) => item.id).indexOf(id)
+    localDataCart.splice(idx, 1)
+
+    localStorage.setItem('cart', JSON.stringify(localDataCart))
+    this.cart$.next(this.cart)
+  }
+
+  clearCart() {
+    this.cart = []
+    localStorage.clear()
     this.cart$.next(this.cart)
   }
 }

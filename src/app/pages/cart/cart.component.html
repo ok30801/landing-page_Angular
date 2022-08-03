@@ -21,8 +21,14 @@
               <div class="text-primary text-xl max-w-[380px] select-none">
                 {{product.productName | titlecase}}
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <svg xmlns="http://www.w3.org/2000/svg"
+                   class="h-6 w-6 hover:cursor-pointer"
+                   viewBox="0 0 24 24"
+                   stroke="currentColor"
+                   stroke-width="2"
+                   (click)="removeProductItem(product.id)"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </div>
 
@@ -67,6 +73,7 @@
         <app-button
           class="w-40"
           [text]="textBtn"
+          (handleClick)="removeAllProducts()"
         ></app-button>
       </div>
 
