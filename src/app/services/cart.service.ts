@@ -56,20 +56,19 @@ export class CartService {
     this.cart$.next(this.cart)
   }
 
-  countTotalPrice() {
+  countAllPrice() {
     this.cart$.subscribe(data => {
       this.allPrice = data.reduce((acc, product) => acc + product.price * product.amount, 0)
-      this.totalPriceProductItem = data.reduce((acc, product) => acc + product.price * product.amount, 0)
-
-      console.log('this.totalPriceProductItem', this.totalPriceProductItem)
-
-      this.totalPriceProductItem$.next(this.totalPriceProductItem)
       this.allPrice$.next(this.allPrice)
     })
   }
 
-  countTotalPriceProductItem() {
-    // this.cart.forEach(item => item.price = item.price * item.amount)
-    // this.cart$.next(this.cart)
+  countTotalPriceProductItem(id: number) {
+    this.cart.forEach(item => {
+      if (item.id === id) {
+        item.totalPrice = item.price * item.amount
+      }
+    })
+    this.cart$.next(this.cart)
   }
 }

@@ -46,7 +46,7 @@
               </div>
 
               <div class="font-montserrat font-medium text-lg font-bold">
-                {{product.price | currency}}
+                {{product.totalPrice | currency}}
               </div>
             </div>
           </div>
@@ -59,7 +59,9 @@
           <ng-container>
             <div class="cart__total-price whitespace-nowrap">Total price:</div>
             <div class="cart__total-price-divide relative w-full h-7"></div>
-            <div>${{allPrice$ | async }}</div>
+            <div *ngIf="allPrice$ | async as allPrice">
+              {{allPrice | number:'2.1-2' | currency }}
+            </div>
           </ng-container>
         </div>
         <app-button

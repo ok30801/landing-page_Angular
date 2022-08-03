@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.cartService.cart$
-    this.cartService.countTotalPrice()
+    this.cartService.countAllPrice()
     this.allPrice$ = this.cartService.allPrice$
 
     this.products$.subscribe(data => {
@@ -39,7 +39,8 @@ export class CartComponent implements OnInit {
         }
       })
     this.cartService.countProductInCart()
-    this.cartService.countTotalPrice()
+    this.cartService.countAllPrice()
+    this.cartService.countTotalPriceProductItem(id)
   }
 
   increaseCountProduct(id: number) {
@@ -50,9 +51,8 @@ export class CartComponent implements OnInit {
         }
       })
     this.cartService.countProductInCart()
-    this.cartService.countTotalPrice()
-    this.cartService.countTotalPriceProductItem()
-
+    this.cartService.countAllPrice()
+    this.cartService.countTotalPriceProductItem(id)
   }
 
   trackBy(index: number, item: any) {

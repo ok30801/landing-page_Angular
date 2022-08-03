@@ -6,6 +6,7 @@ export interface IProduct {
   stars: number,
   price: number,
   oldPrice?: number
+  totalPrice?: number,
   discount: number,
   new: boolean,
   amount: number,
