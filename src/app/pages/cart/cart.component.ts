@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IProduct} from '../../interfaces/interfaces';
 import {CartService} from '../../services/cart.service';
-import {map, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   textBtn: string = 'Clear cart'
 
   public products$!: Observable<IProduct[]>;
-  public totalPrice$!: Observable<number>;
+  public allPrice$!: Observable<number>;
 
   constructor(private cartService: CartService) {
   }
@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.cartService.cart$
     this.cartService.countTotalPrice()
-    this.totalPrice$ = this.cartService.totalPrice$
+    this.allPrice$ = this.cartService.allPrice$
 
     this.products$.subscribe(data => {
       if (!data.length) {
@@ -38,6 +38,8 @@ export class CartComponent implements OnInit {
           item.amount--
         }
       })
+    this.cartService.countProductInCart()
+    this.cartService.countTotalPrice()
   }
 
   increaseCountProduct(id: number) {
@@ -47,6 +49,10 @@ export class CartComponent implements OnInit {
           item.amount++
         }
       })
+    this.cartService.countProductInCart()
+    this.cartService.countTotalPrice()
+    this.cartService.countTotalPriceProductItem()
+
   }
 
   trackBy(index: number, item: any) {

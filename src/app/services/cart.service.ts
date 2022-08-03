@@ -13,11 +13,13 @@ export class CartService {
   public countProducts!: number
   public countProducts$ = new BehaviorSubject<number>(0);
 
-  public totalPrice: number
-  public totalPrice$ = new BehaviorSubject<number>(0)
+  public allPrice: number
+  public allPrice$ = new BehaviorSubject<number>(0)
 
-  constructor() {
-  }
+  public totalPriceProductItem: number
+  public totalPriceProductItem$ = new BehaviorSubject<number>(0)
+
+  constructor() { }
 
   public addProductCart(product: IProduct, id: number) {
     if (this.cart.find(item => item.id === id)) {
@@ -56,10 +58,18 @@ export class CartService {
 
   countTotalPrice() {
     this.cart$.subscribe(data => {
-      this.totalPrice = data.reduce((acc, el) => {
-        return acc + el.price
-      }, 0)
-      this.totalPrice$.next(this.totalPrice)
+      this.allPrice = data.reduce((acc, product) => acc + product.price * product.amount, 0)
+      this.totalPriceProductItem = data.reduce((acc, product) => acc + product.price * product.amount, 0)
+
+      console.log('this.totalPriceProductItem', this.totalPriceProductItem)
+
+      this.totalPriceProductItem$.next(this.totalPriceProductItem)
+      this.allPrice$.next(this.allPrice)
     })
+  }
+
+  countTotalPriceProductItem() {
+    // this.cart.forEach(item => item.price = item.price * item.amount)
+    // this.cart$.next(this.cart)
   }
 }
