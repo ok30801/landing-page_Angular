@@ -32,13 +32,20 @@
 
       <!--Menu-->
       <div
+        *ngFor="let anchor of headerLinks"
         class="header__links flex gap-5 uppercase font-montserrat font-semibold md:hidden
         {{headerTop ? 'text-primary' : 'text-white'}}"
         [class.color]="currentRout !== '/'"
       >
-        <a routerLink="/" *ngFor="let anchor of headerLinks"
-           (click)="scrollPageTo(anchor.url)"
-        >{{anchor.name}}</a>
+        <a *ngIf="currentRout === '/' else anchorsNotMain"
+          (click)="scrollPageTo(anchor)"
+        >{{anchor}}</a>
+        <ng-template #anchorsNotMain>
+          <a
+             [routerLink]='"."'
+             [fragment]="anchor"
+          >{{anchor}}</a>
+        </ng-template>
       </div>
 
       <!--Icons-->
@@ -78,14 +85,27 @@
     </nav>
 
     <nav class="header__mobile flex justify-center">
-
       <div
         class="header__mobile-menu h-0 overflow-hidden flex flex-col justify-center text-2xl gap-5"
         [class.active]="mobileMenu"
       >
-        <a *ngFor="let anchor of headerLinks"
-           (click)="scrollPageTo(anchor.url); showMobileMenu()"
-        >{{anchor.name | titlecase}}</a>
+        <div *ngFor="let anchor of headerLinks">
+          <a *ngIf="currentRout === '/' else anchorsNotMain"
+             (click)="scrollPageTo(anchor); showMobileMenu()"
+          >
+            {{anchor | titlecase}}
+          </a>
+          <ng-template #anchorsNotMain>
+            <a
+              [routerLink]='"."'
+              [fragment]="anchor"
+              (click)="showMobileMenu()"
+            >
+              {{anchor | titlecase}}
+            </a>
+          </ng-template>
+        </div>
+
       </div>
     </nav>
   </div>

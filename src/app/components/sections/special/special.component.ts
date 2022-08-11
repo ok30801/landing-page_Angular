@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecialComponent implements OnInit {
 
-  text: string = 'check out'
+  textBtn: string = 'check out'
   typeComponent: string = 'main'
 
   constructor() { }

@@ -1,7 +1,7 @@
 <button
-  *ngIf="typeComponent === 'catalog' else default"
+  *ngIf="typeComponent === 'catalog' || typeComponent === 'cart' else default"
   class="button rounded-full font-montserrat font-semibold bg-white text-primary border border-darkRed
-         hover:bg-darkRed hover:text-white text-sm w-full h-11 duration-100"
+         hover:bg-darkRed hover:text-white text-sm w-full h-14 duration-100"
   (click)="handleClick.emit()"
 >
   {{text | uppercase}}

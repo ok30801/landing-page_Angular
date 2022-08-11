@@ -1,19 +1,19 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../../assets/icons/auth.service';
+import {AuthService} from '../../../../assets/icons/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-form-auth',
+  templateUrl: './form-auth.component.html',
+  styleUrls: ['./form-auth.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormAuthComponent implements OnInit {
 
   @Output() close = new EventEmitter<void>()
 
   title: string = 'Вход'
-  loginForm!: FormGroup;
+  loginForm: FormGroup;
   showPassword: boolean = false
 
   constructor(private authService: AuthService, private router: Router) { }

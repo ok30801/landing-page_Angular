@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {IProduct} from '../../interfaces/interfaces';
 import {CartService} from '../../services/cart.service';
 import {Observable} from 'rxjs';
-import {logMessages} from '@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +13,6 @@ export class CartComponent implements OnInit {
 
   typeComponent: string = 'cart'
   textBtn: string = 'Clear cart'
-
   public products$!: Observable<IProduct[]>;
   public allPrice$!: Observable<number>;
 
@@ -25,7 +24,6 @@ export class CartComponent implements OnInit {
     this.allPrice$ = this.cartService.allPrice$
 
     this.products$.subscribe(data => {
-      console.log('data', data.length)
       if (!data.length) {
         this.cartService.getDataLocalStorage()
       }
@@ -63,7 +61,4 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart()
   }
 
-  trackBy(index: number, item: any) {
-
-  }
 }

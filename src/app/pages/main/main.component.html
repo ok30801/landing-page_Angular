@@ -1,4 +1,4 @@
-<section class="main h-screen overflow-hidden bg-fixed bg-cover bg-[center_right] md:bg-center mb-20 text-white">
+<section class="main h-screen overflow-hidden bg-fixed bg-cover bg-[center_right] md:bg-center text-white">
 
   <div id="top" class="main__block flex flex-col justify-center items-center" [@title]="titleState">
     <div class="main__title text-[56px] uppercase max-w-5xl text-center font-Oswald mb-8">
@@ -17,11 +17,11 @@
 
   </div>
 
-  <app-form
+  <app-form-auth
     *ngIf="modalForm"
     (close)="hideModalForm()"
     data-aos-duration="200"
-  ></app-form>
+  ></app-form-auth>
 </section>
 
 <app-suggestions></app-suggestions>

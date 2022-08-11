@@ -1,0 +1,79 @@
+<form [formGroup]="formOrder"
+      (ngSubmit)="submitOrder()"
+      class="form w-full h-full flex flex-col gap-5"
+>
+
+  <div class="text-center font-bold text-4xl mb-5">
+    Checkout
+  </div>
+  <div class="relative w-full">
+    <input
+      formControlName="firstName"
+      type="text"
+      placeholder=" "
+      class="form__input h-14 w-full border-b border-gray outline-0 bg-transparent transition-all focus:border-b-2 focus:border-blue-500"
+    />
+    <label class="form__label absolute top-6 left-0 -z-10 transition-all text-four text-lg">
+      Name
+    </label>
+  </div>
+
+  <!--  <div class="relative">-->
+  <!--    <input-->
+  <!--      formControlName="lastName"-->
+  <!--      type="text"-->
+  <!--      placeholder=" "-->
+  <!--      class="form__input h-14 w-full border-b border-gray outline-0 bg-transparent transition-all focus:border-b-2 focus:border-blue-500"-->
+  <!--    />-->
+  <!--    <label class="form__label absolute top-6 left-0 -z-10 transition-all text-four text-lg">-->
+  <!--      Last name-->
+  <!--    </label>-->
+  <!--  </div>-->
+
+  <div class="relative">
+    <input
+      formControlName="email"
+      type="text"
+      placeholder=" "
+      class="form__input h-14 w-full border-b border-gray outline-0 bg-transparent transition-all focus:border-b-2 focus:border-blue-500"
+      [class.form__input-invalid]="this.formOrder.get('email')?.invalid && this.formOrder.get('email')?.touched"
+    />
+    <label class="form__label required absolute top-6 left-0 -z-10 transition-all text-four text-lg">
+      Email
+    </label>
+  </div>
+  <p *ngIf="this.formOrder.get('email')?.invalid && this.formOrder.get('email')?.touched"><small
+    class="text-sm">Phone is required</small>
+  </p>
+
+  <div class="relative flex-auto">
+    <input
+      formControlName="phone"
+      type="text"
+      placeholder=" "
+      [prefix]="test ? '+7' : ''"
+      mask="(000) 000 00 00"
+      required
+      class="form__input h-14 w-full border-b border-gray outline-0 bg-transparent transition-all focus:border-b-2 focus:border-blue-500"
+      [class.form__input-invalid]="this.formOrder.get('phone')?.invalid && this.formOrder.get('phone')?.touched"
+      (click)="onFocus()"
+    />
+    <label class="form__label required absolute top-6 left-0 -z-10 transition-all text-four text-lg">
+      Phone
+    </label>
+
+    <p *ngIf="this.formOrder.get('phone')?.invalid && this.formOrder.get('phone')?.touched" class="absolute top-[70px]">
+      <small class="text-sm">Phone is required</small>
+    </p>
+  </div>
+
+
+
+  <app-button
+    class="h-14 min-w-[120px]"
+    [text]="textBtn"
+    [typeComponent]='typeComponent'
+    (handleClick)="submitOrder()"
+  ></app-button>
+</form>
+

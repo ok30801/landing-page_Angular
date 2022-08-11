@@ -1,0 +1,18 @@
+.form {
+  &__input:focus ~ &__label,
+  &__input:not(:placeholder-shown) ~ &__label {
+    top: -18px;
+    font-size: 12px;
+  }
+  &__input-invalid {
+    border-bottom: 2px solid #ff2300;
+  }
+  &__label.required:after {
+    content: '*';
+    display: block;
+    position: absolute;
+    color: #ff2300;
+    top: 0;
+    right: -10px;
+  }
+}

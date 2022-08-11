@@ -57,6 +57,7 @@ export class CatalogComponent implements OnInit {
     .map((item: any) => {
         if (id === item.id) {
           item.amount++
+          item.totalPrice = item.price * item.amount
         }
       }
     )

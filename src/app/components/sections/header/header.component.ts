@@ -26,15 +26,27 @@ export class HeaderComponent implements OnInit {
 
   topScroll = 'top'
   errorState = 'start'
-  headerLinks = [
-    { id: 'link_1', name: 'about us', url: 'about-us' },
-    { id: 'link_2', name: 'catalog', url: 'catalog' },
-    { id: 'link_2', name: 'special', url: 'special' },
-    { id: 'link_2', name: 'manufacture', url: 'manufacture' },
-    { id: 'link_3', name: 'delivery', url: 'delivery' },
-    { id: 'link_4', name: 'faq', url: 'faq' },
-    { id: 'link_5', name: 'reviews', url: 'reviews' },
-    { id: 'link_6', name: 'feedback', url: 'feedback' },
+  // headerLinks: Array<any> = [
+  //   { id: 'link_1', name: 'about us', url: 'about-us' },
+  //   { id: 'link_2', name: 'catalog', url: 'catalog' },
+  //   { id: 'link_2', name: 'special', url: 'special' },
+  //   { id: 'link_2', name: 'manufacture', url: 'manufacture' },
+  //   { id: 'link_3', name: 'delivery', url: 'delivery' },
+  //   { id: 'link_4', name: 'faq', url: 'faq' },
+  //   { id: 'link_5', name: 'reviews', url: 'reviews' },
+  //   { id: 'link_6', name: 'feedback', url: 'feedback' },
+  // ]
+
+
+  headerLinks: Array<string> = [
+    'about-us',
+    'catalog',
+    'special',
+    'manufacture',
+    'delivery',
+    'faq',
+    'reviews',
+    'feedback',
   ]
 
   @Input() currentRout!: string
@@ -43,13 +55,15 @@ export class HeaderComponent implements OnInit {
   public headerTop: boolean = false
   public countProducts$!: Observable<number>;
 
-  constructor(private cartService: CartService, public errorService: ErrorService) { }
+  constructor(private cartService: CartService, public errorService: ErrorService) {
+  }
 
   ngOnInit(): void {
     this.countProducts$ = this.cartService.countProducts$
     this.cartService.countProductInCart()
     this.animate()
   }
+
   animate() {
     this.errorState = this.errorState === 'start' ? 'end' : 'start'
   }
@@ -66,9 +80,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  scrollPageTo = (url: string) => {
+  scrollPageTo(url: string) {
     const element = document.querySelector(`#${url}`);
     element?.classList.add('scrollActive');
-    element?.scrollIntoView({ behavior: 'smooth' });
+    element?.scrollIntoView({behavior: 'smooth'});
   }
 }

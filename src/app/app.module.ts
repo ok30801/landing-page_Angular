@@ -8,7 +8,8 @@ import { HeaderComponent } from './components/sections/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormComponent } from './components/form/form.component';
+import { FormAuthComponent } from './components/form/formAuth/form-auth.component';
+import { FormOrder } from './components/form/formOrder/form-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SuggestionsComponent } from './components/sections/suggestions/suggestions.component';
 import { SwiperModule } from 'swiper/angular';
@@ -35,13 +36,15 @@ import { SortedProductsPipe } from './pipes/sorted-products.pipe';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductComponent } from './pages/product/product.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HeaderComponent,
-    FormComponent,
+    FormAuthComponent,
+    FormOrder,
     SuggestionsComponent,
     CatalogComponent,
     SpecialComponent,
@@ -75,6 +78,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     NgSelectModule,
     FormsModule,
     NgxPaginationModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
